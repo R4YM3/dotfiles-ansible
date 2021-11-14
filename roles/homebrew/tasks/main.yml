@@ -1,3 +1,6 @@
+- include_vars: "main.yml"
+  tags: always
+
 - name: homebrew_cask | install | packages
   tags: packages, homebrew, cask
   become: no
