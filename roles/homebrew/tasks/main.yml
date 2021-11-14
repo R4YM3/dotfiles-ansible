@@ -3,6 +3,6 @@
   become: no
   homebrew:
     state: present
-    name: {{ item }}
+    name: "{{ item }}"
   with_items: "{{ homebrew_cask }}"
   when: "{{ ansible_distribution == 'MacOSX' }}"

@@ -3,5 +3,5 @@
   become: "{{ ansible_distribution != 'MacOSX' }}"
   package:
     state: latest
-    name: {{ item }}
+    name: "{{ item }}"
   with_items: "{{ cli }}"
