@@ -4,5 +4,5 @@
   apt:
     state: latest
     name: {{ item }}
-  with_items: {{ apt }}
+  with_items: "{{ apt }}"
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'

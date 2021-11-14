@@ -5,5 +5,5 @@
     classic: yes
     state: present
     name: {{ item }}
-  with_items: {{ snap }}
+  with_items: "{{ snap }}"
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'

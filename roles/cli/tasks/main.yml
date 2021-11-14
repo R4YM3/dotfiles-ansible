@@ -4,4 +4,4 @@
   package:
     state: latest
     name: {{ item }}
-  with_items: {{ cli }}
+  with_items: "{{ cli }}"

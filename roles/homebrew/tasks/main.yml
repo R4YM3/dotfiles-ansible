@@ -4,5 +4,5 @@
   homebrew:
     state: present
     name: {{ item }}
-  with_items: {{ homebrew_cask }}
+  with_items: "{{ homebrew_cask }}"
   when: "{{ ansible_distribution == 'MacOSX' }}"
