@@ -1,3 +1,6 @@
+- include_vars: "cli.yml"
+  tags: always
+
 - name: cli | install
   tags: cli, install
   become: "{{ ansible_distribution != 'MacOSX' }}"
