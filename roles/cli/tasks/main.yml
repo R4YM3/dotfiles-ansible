@@ -1,0 +1,7 @@
+- name: cli | install
+  tags: cli, install
+  become: "{{ ansible_distribution != 'MacOSX' }}"
+  package:
+    state: latest
+    name: {{ item }}
+  with_items: {{ cli }}

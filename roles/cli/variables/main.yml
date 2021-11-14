@@ -1,0 +1,17 @@
+cli:
+  - awscli
+  - catimg
+  - cmake
+  - docker
+  - docker-compose
+  - ffmpeg
+  - fonts-powerline
+  - htop
+  - lolcat
+  - lynx
+  - make
+  - openconnect
+  - powerline
+  - python3
+  - wget
+  - zsh
