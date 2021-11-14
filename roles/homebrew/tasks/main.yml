@@ -1,0 +1,8 @@
+- name: homebrew_cask | install | packages
+  tags: packages, homebrew, cask
+  become: no
+  homebrew:
+    state: present
+    name: {{ item }}
+  with_items: {{ homebrew_cask }}
+  when: "{{ ansible_distribution == 'MacOSX' }}"

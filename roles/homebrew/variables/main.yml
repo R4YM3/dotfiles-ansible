@@ -1,0 +1,17 @@
+homebrew_cask:
+  - 1password
+  - cyberduck
+  - firefox
+  - gitkraken
+  - gitup
+  - google-chrome
+  - iterm2
+  - macdown
+  - microsoft-teams
+  - notion
+  - opera
+  - postman
+  - slack
+  - tidal
+  - vlc
+  - whatsapp

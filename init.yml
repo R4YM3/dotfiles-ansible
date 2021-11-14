@@ -3,3 +3,4 @@
   roles:
     - role: macos
     - role: macos.homebrew
+    - role: homwbrew
