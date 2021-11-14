@@ -7,6 +7,27 @@
       - docker
       - docker-compose
       - ffmpeg
-      - mono
-      - ncdu
       - wget
+
+- name: homebrew_cask | install | packages
+  tags: packages, homebrew_cask
+  become: no
+  homebrew:
+    state: present
+    name:
+      - 1password
+      - cyberduck
+      - firefox
+      - gitkraken
+      - gitup
+      - google-chrome
+      - iterm2
+      - macdown
+      - microsoft-teams
+      - notion
+      - opera
+      - postman
+      - slack
+      - tidal
+      - vlc
+      - whatsapp
