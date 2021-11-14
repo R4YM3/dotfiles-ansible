@@ -8,3 +8,6 @@ brew install python ansible
 
 # use installed python (not default from OS)
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
+ansible-playbook init.yml
+
