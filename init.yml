@@ -4,4 +4,5 @@
     - role: macos
     - role: cli
     - role: homwbrew
+    - role: apt
     - role: snap
