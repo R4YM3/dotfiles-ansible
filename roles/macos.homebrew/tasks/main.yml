@@ -1,0 +1,12 @@
+- name: homebrew
+  tags: packages, homebrew
+  become: no
+  homebrew:
+    state: present
+    name:
+      - docker
+      - docker-compose
+      - ffmpeg
+      - mono
+      - ncdu
+      - wget

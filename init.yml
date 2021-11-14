@@ -1,0 +1,5 @@
+---
+- hosts: localhost
+  roles:
+    - role: macos.settings
+    - role: macos.homebrew
