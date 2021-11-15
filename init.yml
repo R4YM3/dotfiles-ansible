@@ -3,6 +3,7 @@
   roles:
     - role: macos
     - role: cli
+    - role: pip
     - role: homebrew_cask
     - role: apt
     - role: snap
