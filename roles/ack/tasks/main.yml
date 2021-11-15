@@ -5,7 +5,6 @@
     state: present
     name:
       - ack
-      - ack-grep
 
 - name: ack | install | .ackrc
   tags: ack, .ackrc, dotfile
