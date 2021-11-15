@@ -50,26 +50,48 @@
   tags: macos, multitouch, trackpad
   command: defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
-- name: "dock: remove apps"
+- name: "macos: dock: remove apps"
   tags: macos, dock, remove-apps
   command: defaults write com.apple.dock persistent-apps -array
 
-- name: "dock: smaller icons"
+- name: "macos: dock: smaller icons"
   tags: macos, dock, smaller-icons
   command: defaults write com.apple.dock tilesize -integer 32
 
-- name: "dock: animation speed"
+- name: "macos: dock: animation speed"
   tags: macos, dock, animation-speed
   command: defaults write com.apple.dock autohide-time-modifier -float 0.26
 
-- name: "dock: enable authide"
+- name: "macos: dock: enable authide"
   tags: macos, dock, autohide
   command: defaults read com.apple.Dock autohide
 
-- name: "dock: enable autohide"
+- name: "macos: dock: enable autohide"
   tags: macos, dock, restart
   command: killall Dock
 
-- name: "dock: enable autohide"
+- name: "macos: dock: enable autohide"
   tags: macos, screenshots, downloads
   command: defaults write com.apple.screencapture location ~/Downloads
+
+- name: macos: quicklook: plugins
+  tags: macos, quicklook
+  homebrew:
+    state: present
+    name:
+      - apparency
+      - qlcolorcode
+      - qlmarkdown
+      - qlprettypatch
+      - qlstephen
+      - qlvideo
+      - quicklook-csv
+      - quicklook-json
+      - quicklookase
+      - suspicious-package
+      - webpquicklook
+
+- name: macos: quicklook: plugin permissions
+  tags: macos, quicklook
+  become_user: '{{ ansible_env.USER }}'
+  shell: 'xattr -cr ~/Library/QuickLook/*.qlgenerator'
