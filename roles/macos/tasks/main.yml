@@ -76,7 +76,7 @@
 
 - name: "macos: quicklook: plugins"
   tags: macos, quicklook
-  homebrew:
+  homebrew_cask:
     state: present
     name:
       - apparency
