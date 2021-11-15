@@ -89,7 +89,7 @@
   homebrew_cask:
     state: present
     name: "{{ item }}"
-    with_items: "{{ quicklook_plugins }}"
+  with_items: "{{ quicklook_plugins }}"
 
 # - name: "macos: quicklook: plugin permissions"
 #   tags: macos, quicklook
