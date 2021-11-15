@@ -74,16 +74,6 @@
   tags: macos, screenshots, downloads
   command: defaults write com.apple.screencapture location ~/Downloads
 
-
-- name: homebrew_cask | install | packages
-  tags: packages, homebrew, cask
-  become: no
-  homebrew_cask:
-    state: present
-    name: "{{ item }}"
-  with_items: "{{ homebrew_cask }}"
-  when: ansible_distribution == 'MacOSX'
-
 - name: "macos: quicklook: install plugins"
   tags: macos, quicklook
   homebrew_cask:
