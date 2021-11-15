@@ -5,7 +5,10 @@
     - role: cli
     # - role: pip
     - role: homebrew_cask
+
     - role: apt
     - role: snap
+
     - role: ack
+    - role: curl
     - role: wget

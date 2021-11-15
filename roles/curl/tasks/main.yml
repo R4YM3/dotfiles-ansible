@@ -1,0 +1,14 @@
+---
+- name: curl | install
+  tags: curl
+  become: '{{ ansible_distribution != "MacOSX" }}'
+  package:
+    state: present
+    name: curl
+
+- name: curl | install | .curlrc
+  tags: curl, .curlrc, dotfile
+  copy:
+    src: files/curl/curlrc
+    dest: '{{ HOME_DIR }}/.curlrc'
+    owner: '{{ USER }}'
