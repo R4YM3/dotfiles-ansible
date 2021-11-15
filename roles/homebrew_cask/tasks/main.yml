@@ -1,11 +1,8 @@
-- debug:
-    msg: "System {{ ansible_distribution }}"
-
 - name: homebrew_cask | install | packages
   tags: packages, homebrew, cask
   become: no
-  homebrew:
+  homebrew_cask:
     state: present
     name: "{{ item }}"
   with_items: "{{ homebrew_cask }}"
-  when: "{{ ansible_distribution == 'MacOSX' }}"
+  when: ansible_distribution == 'MacOSX'
