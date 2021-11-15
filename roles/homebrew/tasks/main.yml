@@ -1,3 +1,6 @@
+- debug:
+    msg: "System {{ ansible_distribution }}"
+
 - name: homebrew_cask | install | packages
   tags: packages, homebrew, cask
   become: no
