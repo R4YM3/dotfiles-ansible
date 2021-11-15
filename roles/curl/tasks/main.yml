@@ -10,5 +10,5 @@
   tags: curl, .curlrc, dotfile
   copy:
     src: files/curl/curlrc
-    dest: '{{ HOME_DIR }}/.curlrc'
-    owner: '{{ USER }}'
+    dest: '{{ ansible_env.HOME }}/.curlrc'
+    owner: '{{ ansible_env.USER }}'
