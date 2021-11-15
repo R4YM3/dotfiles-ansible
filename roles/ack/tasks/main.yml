@@ -1,4 +1,4 @@
-- name: ack | apt install | packages
+- name: ack | install | package
   tags: ack
   become: '{{ ansible_distribution != "MacOSX" }}'
   package:
