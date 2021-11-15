@@ -8,3 +8,4 @@
     - role: apt
     - role: snap
     - role: ack
+    - role: wget

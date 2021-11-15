@@ -1,0 +1,13 @@
+- name: wget | install
+  tags: wget
+  become: "{{ ansible_distribution != 'MacOSX' }}"
+  package:
+    state: present
+    name: wget
+
+- name: wget | install | wgetrc.
+  tags: wget,.wgetrc,dotfile
+  copy:
+    src: files/wget/wgetrc
+    dest: '{{ HOME_DIR }}/.wgetrc'
+    owner: '{{ USER }}'
