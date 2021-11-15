@@ -5,13 +5,13 @@ cli:
   - docker
   - docker-compose
   - ffmpeg
-  - fonts-powerline
+  # - fonts-powerline
   - htop
   - lolcat
   - lynx
   - make
   - openconnect
-  - powerline
+  # - powerline
   - python3
   - wget
   - zsh
