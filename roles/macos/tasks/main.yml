@@ -91,7 +91,7 @@
       - suspicious-package
       - webpquicklook
 
-- name: "macos: quicklook: plugin permissions"
-  tags: macos, quicklook
-  become_user: '{{ ansible_env.USER }}'
-  shell: 'xattr -cr ~/Library/QuickLook/*.qlgenerator'
+# - name: "macos: quicklook: plugin permissions"
+#   tags: macos, quicklook
+#   become_user: '{{ ansible_env.USER }}'
+#   shell: 'xattr -cr ~/Library/QuickLook/*.qlgenerator'
