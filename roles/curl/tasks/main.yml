@@ -9,6 +9,6 @@
 - name: curl | install | .curlrc
   tags: curl, .curlrc, dotfile
   copy:
-    src: files/curl/curlrc
+    src: files/curlrc
     dest: '{{ ansible_env.HOME }}/.curlrc'
     owner: '{{ ansible_env.USER }}'

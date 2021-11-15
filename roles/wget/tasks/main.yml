@@ -9,6 +9,6 @@
 - name: wget | install | wgetrc.
   tags: wget,.wgetrc,dotfile
   copy:
-    src: files/wget/wgetrc
+    src: files/wgetrc
     dest: '{{ ansible_env.HOME }}/.wgetrc'
     owner: '{{ ansible_env.USER }}'
