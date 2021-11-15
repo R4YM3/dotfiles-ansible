@@ -7,3 +7,4 @@
     - role: homebrew_cask
     - role: apt
     - role: snap
+    - role: ack

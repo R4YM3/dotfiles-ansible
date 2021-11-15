@@ -1,0 +1,15 @@
+- name: ack | apt install | packages
+  tags: ack
+  become: '{{ ansible_distribution != "MacOSX" }}'
+  package:
+    state: present
+    name:
+      - ack
+      - ack-grep
+
+- name: ack | install | .ackrc
+  tags: ack, .ackrc, dotfile
+  copy:
+    src: files/ackrc
+    dest: '{{ ansible_env.HOME }}/.ackrc'
+    owner: '{{ ansible_env.USER }}'
