@@ -1,0 +1,12 @@
+quicklook_plugins:
+  - apparency
+  - qlcolorcode
+  - qlmarkdown
+  - qlprettypatch
+  - qlstephen
+  - qlvideo
+  - quicklook-csv
+  - quicklook-json
+  - quicklookase
+  - suspicious-package
+  - webpquicklook
