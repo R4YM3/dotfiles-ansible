@@ -1,0 +1,21 @@
+-z name: tmuxinator | install
+  tags: tmuxinator
+  become: "{{ ansible_distribution != 'MacOSX' }}"
+  package:
+    state: present
+    name:
+      - tmuxinator
+
+- name: tmuxinator | install | boilerplate projects
+  tags: tmuxinator
+  copy:
+    src: files/tmuxinator/projects/
+    dest: '{{TMUXINATOR_DIR}}'
+    owner: '{{ USER }}'
+
+- name: tmuxinator | install | aliases
+  tags: tmuxinator, aliases
+  copy:
+    src: files/aliases
+    dest: '{{ ALIASES_DIR }}/tmuxinator'
+    owner: '{{ ansible_env.USER }}'
