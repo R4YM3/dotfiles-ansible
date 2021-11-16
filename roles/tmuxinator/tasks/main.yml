@@ -1,4 +1,4 @@
--z name: tmuxinator | install
+- name: tmuxinator | install
   tags: tmuxinator
   become: "{{ ansible_distribution != 'MacOSX' }}"
   package:
