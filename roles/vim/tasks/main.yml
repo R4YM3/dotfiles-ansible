@@ -1,0 +1,48 @@
+- name: vim | install
+  tags: vim
+  become: "{{ ansible_distribution != 'MacOSX' }}"
+  package:
+    state: present
+    name:
+      - vim
+      - neovim
+
+- name: vim } directory | config nvim
+  file:
+    path: '{{ NEOVIM_DIR }}'
+    state: directory
+    owner: '{{ ansible_env.USER }}'
+
+- name: vim | install | .vimrc
+  tags: vim, dotfile
+  copy:
+    src: files/vimrc
+    dest: '{{ NEOVIM_DIR }}/init.vim'
+    owner: '{{ ansible_env.USER }}'
+
+- name: vim | plugin | coc dependecies
+  tags: vim, plugin, coc
+  become: "{{ ansible_distribution != 'MacOSX' }}"
+  package:
+    state: present
+    name:
+      - python3
+      - python3-pip
+
+- name: vim | plugin | fix coc python error
+  tags: vim, plugin, coc, fix
+  shell: 'python3 -m pip install --user --upgrade pynvim'
+
+- name: vim | install | .ctags
+  tags: vim, dotfile, ctags
+  copy:
+    src: files/ctags
+    dest: '{{ HOME_DIR }}/.ctags'
+    owner: '{{ ansible_env.USER }}'
+
+- name: vim | install | aliases
+  tags: vim, aliases
+  copy:
+    src: files/aliases
+    dest: '{{ ALIASES_DIR }}/vim'
+    owner: '{{ ansible_env.USER }}'

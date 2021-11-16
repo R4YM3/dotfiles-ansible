@@ -1,4 +1,7 @@
 ---
+- include_vars: "defaults/main.yml"
+  tags: always
+
 - hosts: localhost
   roles:
     - role: macos
@@ -9,9 +12,10 @@
     - role: apt
     - role: snap
 
-    - role: git
     - role: ack
     - role: curl
-    - role: wget
+    - role: git
     - role: tmux
     - role: tmuxinator
+    - role: vim
+    - role: wget

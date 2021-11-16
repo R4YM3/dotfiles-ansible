@@ -1,0 +1,1 @@
+NEOVIM_DIR: '{{ CONFIG_DIR }}/nvim'
