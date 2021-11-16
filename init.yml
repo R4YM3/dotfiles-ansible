@@ -9,6 +9,7 @@
     - role: apt
     - role: snap
 
+    - role: git
     - role: ack
     - role: curl
     - role: wget

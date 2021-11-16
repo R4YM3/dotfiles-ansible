@@ -1,0 +1,31 @@
+---
+- name: git | install | packages
+  tags: git
+  become: "{{ ansible_distribution != 'MacOSX' }}"
+  package:
+    state: present
+    name:
+      - git
+      - git-all
+      - git-crypt
+
+- name: git | install | .gitattributes
+  tags: git, .gitattributes, dotfile
+  copy:
+    src: files/gitattributes
+    dest: '{{ ansible_env.HOME }}/.gitattributes'
+    owner: '{{ ansible_env.USER }}'
+
+- name: git | install | .gitconfig
+  tags: git, .gitconfig, dotfile
+  copy:
+    src: files/gitconfig
+    dest: '{{ ansible_env.HOME }}/.gitconfig'
+    owner: '{{ ansible_env.USER }}'
+
+- name: git | install | .gitignore
+  tags: git, .gitignore, dotfile
+  copy:
+    src: files/gitignore
+    dest: '{{ ansible_env.HOME }}/.gitignore'
+    owner: '{{ ansible_env.USER }}'
