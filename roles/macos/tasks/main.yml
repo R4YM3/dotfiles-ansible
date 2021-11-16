@@ -62,15 +62,15 @@
   tags: macos, dock, animation-speed
   command: defaults write com.apple.dock autohide-time-modifier -float 0.26
 
-- name: "macos: dock: enable authide"
+- name: "macos: dock: enable autohide"
   tags: macos, dock, autohide
   command: defaults read com.apple.Dock autohide
 
-- name: "macos: dock: enable autohide"
+- name: "macos: dock: restart"
   tags: macos, dock, restart
   command: killall Dock
 
-- name: "macos: dock: enable autohide"
+- name: "macos: screenshots: downloads folder"
   tags: macos, screenshots, downloads
   command: defaults write com.apple.screencapture location ~/Downloads
 
