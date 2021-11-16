@@ -1,0 +1,16 @@
+---
+- name: tmux | install
+  tags: tmux
+  become: "{{ ansible_distribution != 'MacOSX' }}"
+  package:
+    state: present
+    name:
+      - tmux
+
+- name: tmux | install | .tmux.conf
+  tags: tmux, .tmux.conf, dotfile
+  copy:
+    src: files/tmux.conf
+    dest: '{{ ansible_env.HOME }}/.tmux.conf'
+    owner: '{{ ansible_env.USER }}'
+

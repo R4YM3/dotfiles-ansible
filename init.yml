@@ -13,3 +13,4 @@
     - role: ack
     - role: curl
     - role: wget
+    - role: tmux
