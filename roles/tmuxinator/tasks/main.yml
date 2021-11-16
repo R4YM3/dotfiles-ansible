@@ -9,7 +9,7 @@
 - name: tmuxinator | install | boilerplate projects
   tags: tmuxinator
   copy:
-    src: files/tmuxinator/projects/
+    src: files/projects/
     dest: '{{ TMUXINATOR_DIR }}'
     owner: '{{ ansible_env.USER }}'
 
