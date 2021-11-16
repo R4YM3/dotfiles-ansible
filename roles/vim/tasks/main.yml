@@ -37,7 +37,7 @@
   tags: vim, dotfile, ctags
   copy:
     src: files/ctags
-    dest: '{{ HOME_DIR }}/.ctags'
+    dest: '{{ ansible_env.HOME }}/.ctags'
     owner: '{{ ansible_env.USER }}'
 
 - name: vim | install | aliases
