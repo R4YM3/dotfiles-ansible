@@ -1,0 +1,12 @@
+- name: directories | create config directory
+  file:
+    path: '{{ CONFIG_DIR }}'
+    state: directory
+    owner: '{{ ansible_env.USER }}'
+
+- name: directories | create aliases directory
+  file:
+    path: '{{ ALIASES_DIR }}'
+    state: directory
+    owner: '{{ ansible_env.USER }}'
+

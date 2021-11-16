@@ -1,13 +1,11 @@
 - hosts: localhost
-  vars:
-    CONFIG_DIR: '{{ ansible_env.HOME }}/.config'
-    ALIASES_DIR: '{{ CONFIG_DIR }}/aliases'
   roles:
+    - role: directories
+
     - role: macos
     - role: cli
     # - role: pip
     - role: homebrew_cask
-
     - role: apt
     - role: snap
 
