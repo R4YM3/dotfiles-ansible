@@ -10,8 +10,8 @@
   tags: tmuxinator
   copy:
     src: files/tmuxinator/projects/
-    dest: '{{TMUXINATOR_DIR}}'
-    owner: '{{ USER }}'
+    dest: '{{ TMUXINATOR_DIR }}'
+    owner: '{{ ansible_env.USER }}'
 
 - name: tmuxinator | install | aliases
   tags: tmuxinator, aliases

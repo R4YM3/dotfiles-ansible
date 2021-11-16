@@ -1,0 +1,1 @@
+TMUXINATOR_DIR : '{{ CONFIG_DIR }}/tmuxinator'
