@@ -1,8 +1,7 @@
----
-- include_vars: "defaults/main.yml"
-  tags: always
-
 - hosts: localhost
+  vars:
+    CONFIG_DIR: '{{ ansible_env.HOME }}/.config'
+    ALIASES_DIR: '{{ CONFIG_DIR }}/zsh/aliases'
   roles:
     - role: macos
     - role: cli
