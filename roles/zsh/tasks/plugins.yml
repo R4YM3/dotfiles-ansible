@@ -31,14 +31,6 @@
     dest: ~/.oh-my-zsh/plugins/zsh-nvm
     clone: yes
 
-- name: replace plugin
-  lineinfile:
-    path: ~/.zshrc
-    regexp: 'plugins=(git)'
-    line: 'plugins=(aws git nvm npm zsh-syntax-highlighting zsh-autosuggestions)'
-    backrefs: yes
-
-
 - name: Check if .zshrc exists
   stat:
     path: ~/.zshrc
@@ -49,6 +41,13 @@
     src=~/.oh-my-zsh/templates/zshrc.zsh-template
     dest=~/.zshrc
   when: not stat_rc_result.stat.exists
+
+- name: replace plugin
+  lineinfile:
+    path: ~/.zshrc
+    regexp: 'plugins=(git)'
+    line: 'plugins=(aws git nvm npm zsh-syntax-highlighting zsh-autosuggestions)'
+    backrefs: yes
 
 - name: replace thema
   lineinfile:
