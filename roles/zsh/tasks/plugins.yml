@@ -1,0 +1,145 @@
+- name: Check if .oh-my-zsh exists
+  stat:
+    path: ~/.oh-my-zsh
+  register: stat_oh_my_zsh_result
+
+- name: Cloning oh-my-zsh
+  git:
+    repo: https://github.com/robbyrussell/oh-my-zsh
+    dest: ~/.oh-my-zsh
+    clone: yes
+  when: not stat_oh_my_zsh_result.stat.exists
+
+- name: plugin zsh autosuggest
+  tags: zsh, oh-my-zsh, zsh-plugins
+  git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions.git
+    dest: ~/.oh-my-zsh/plugins/zsh-autosuggestions
+    clone: yes
+
+- name: plugin zsh syntax highlighting
+  tags: zsh, oh-my-zsh, zsh-plugins
+  git:
+    repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+    dest: ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
+    clone: yes
+
+- name: zsh | oh-my-zsh | clone zsh-nvm
+  tags: zsh, oh-my-zsh, zsh-plugins
+  git:
+    repo: https://github.com/lukechilds/zsh-nvm.git
+    dest: ~/.oh-my-zsh/plugins/zsh-nvm
+    clone: yes
+
+- name: replace plugin
+  lineinfile:
+    path: ~/.zshrc
+    regexp: 'plugins=(git)'
+    line: 'plugins=(aws git nvm npm zsh-syntax-highlighting zsh-autosuggestions)'
+    backrefs: yes
+
+
+- name: Check if .zshrc exists
+  stat:
+    path: ~/.zshrc
+  register: stat_rc_result
+
+- name: Creating new ~/.zshrc
+  copy:
+    src=~/.oh-my-zsh/templates/zshrc.zsh-template
+    dest=~/.zshrc
+  when: not stat_rc_result.stat.exists
+
+- name: replace thema
+  lineinfile:
+    path: ~/.zshrc
+    regexp: '^(.*)ZSH_THEME="robbyrussell"(.*)$'
+    line: 'ZSH_THEME="agnoster"'
+    backrefs: yes
+
+- name: Enable ENABLE_CORRECTION
+  lineinfile:
+    path: ~/.zshrc
+    regexp: '# ENABLE_CORRECTION="true"'
+    line: 'ENABLE_CORRECTION="true"'
+    backrefs: yes
+
+- name: Enable COMPLETION_WAITING_DOTS
+  lineinfile:
+    path: ~/.zshrc
+    regexp: '# COMPLETION_WAITING_DOTS="true"'
+    line: 'COMPLETION_WAITING_DOTS="true"'
+    backrefs: yes
+
+- name: Dutch scheme in HIST_STAMPS
+  lineinfile:
+    path: ~/.zshrc
+    regexp: '# HIST_STAMPS="mm/dd/yyyy"'
+    line: 'HIST_STAMPS="mm-dd-yyyy"'
+    backrefs: yes
+
+
+- name: Command line as vim
+  blockinfile:
+    dest: ~/.zshrc
+    block: |
+      # vim style editing in ZSH
+      bindkey -v
+    backup: yes
+  when: not stat_rc_result.stat.exists
+
+- name: Add autostart
+  blockinfile:
+    dest: ~/.zshrc
+    block: |
+      clear
+      neofetch
+    backup: yes
+  when: not stat_rc_result.stat.exists
+
+- name: Set default editor
+  blockinfile:
+    dest: ~/.zshrc
+    block: |
+      if [[ -n $SSH_CONNECTION ]]; then
+        export EDITOR='vim'
+      else
+        export EDITOR='nvim'
+      fi
+    backup: yes
+  when: not stat_rc_result.stat.exists
+
+
+- name: Set $PATH
+  blockinfile:
+    dest: ~/.zshrc
+    block: |
+      export PATH="/usr/local/bin:$PATH"
+    backup: yes
+  when: not stat_rc_result.stat.exists
+
+- name: Setup nvm
+  blockinfile:
+    dest: ~/.zshrc
+    block: |
+      export NVM_DIR="{{ ansible_env.USER }}/.nvm"
+      [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+      [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+      export PATH="/usr/local/bin:$PATH"
+    backup: yes
+  when: not stat_rc_result.stat.exists
+
+- name: Add whilte after command output
+  blockinfile:
+    dest: ~/.zshrc
+    block: |
+      PS1=$'\n'"$PS1"
+    backup: yes
+  when: not stat_rc_result.stat.exists
+
+- name: put zsh default bash
+  shell: chsh -s $(which zsh)
+- name: reload zsh
+  shell: source ~/.zshrc
+  args:
+    executable: /bin/bash

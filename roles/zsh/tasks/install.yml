@@ -1,0 +1,9 @@
+- name: zsh | apt | install zsh and dependecies
+  tags: zsh
+  become: "{{ ansible_distribution != 'MacOSX' }}"
+  package:
+    name:
+      - git
+      - zsh
+      - neofetch
+    state: latest

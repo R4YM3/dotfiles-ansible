@@ -16,3 +16,4 @@
     - role: tmuxinator
     - role: vim
     - role: wget
+    - role: zsh
