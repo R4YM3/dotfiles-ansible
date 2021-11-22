@@ -1,9 +1,11 @@
 - name: Check if .oh-my-zsh exists
+  tags: zsh, ohmyzsh
   stat:
     path: ~/.oh-my-zsh
   register: stat_oh_my_zsh_result
 
 - name: Cloning oh-my-zsh
+  tags: zsh, ohmyzsh
   git:
     repo: https://github.com/robbyrussell/oh-my-zsh
     dest: ~/.oh-my-zsh
@@ -11,43 +13,47 @@
   when: not stat_oh_my_zsh_result.stat.exists
 
 - name: plugin zsh autosuggest
-  tags: zsh, oh-my-zsh, zsh-plugins
+  tags: zsh, ohmyzsh
   git:
     repo: https://github.com/zsh-users/zsh-autosuggestions.git
     dest: ~/.oh-my-zsh/plugins/zsh-autosuggestions
     clone: yes
 
 - name: plugin zsh syntax highlighting
-  tags: zsh, oh-my-zsh, zsh-plugins
+  tags: zsh, ohmyzsh
   git:
     repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
     dest: ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
     clone: yes
 
 - name: zsh | oh-my-zsh | clone zsh-nvm
-  tags: zsh, oh-my-zsh, zsh-plugins
+  tags: zsh, ohmyzsh
   git:
     repo: https://github.com/lukechilds/zsh-nvm.git
     dest: ~/.oh-my-zsh/plugins/zsh-nvm
     clone: yes
 
 - name: Check if .zshrc exists
+  tags: zsh, ohmyzsh
   stat:
     path: ~/.zshrc
   register: stat_rc_result
 
 - name: Delete current .zshrc
+  tags: zsh, ohmyzsh
   file:
     state: absent
     path: ~/.zshrc
   when: not stat_rc_result.stat.exists
 
 - name: Creating new ~/.zshrc
+  tags: zsh, ohmyzsh
   copy:
     src=~/.oh-my-zsh/templates/zshrc.zsh-template
     dest=~/.zshrc
 
 - name: replace plugin
+  tags: zsh, ohmyzsh
   lineinfile:
     path: ~/.zshrc
     regexp: 'plugins=(git)'
@@ -55,6 +61,7 @@
     backrefs: yes
 
 - name: replace thema
+  tags: zsh, ohmyzsh
   lineinfile:
     path: ~/.zshrc
     regexp: '^(.*)ZSH_THEME="robbyrussell"(.*)$'
@@ -62,6 +69,7 @@
     backrefs: yes
 
 - name: Enable ENABLE_CORRECTION
+  tags: zsh, ohmyzsh
   lineinfile:
     path: ~/.zshrc
     regexp: '# ENABLE_CORRECTION="true"'
@@ -69,6 +77,7 @@
     backrefs: yes
 
 - name: Enable COMPLETION_WAITING_DOTS
+  tags: zsh, ohmyzsh
   lineinfile:
     path: ~/.zshrc
     regexp: '# COMPLETION_WAITING_DOTS="true"'
@@ -76,6 +85,7 @@
     backrefs: yes
 
 - name: Dutch scheme in HIST_STAMPS
+  tags: zsh, ohmyzsh
   lineinfile:
     path: ~/.zshrc
     regexp: '# HIST_STAMPS="mm/dd/yyyy"'
@@ -83,6 +93,7 @@
     backrefs: yes
 
 - name: Add custom config in .zshrc
+  tags: zsh, ohmyzsh
   blockinfile:
     dest: ~/.zshrc
     block: |
@@ -114,8 +125,11 @@
     backup: yes
 
 - name: put zsh default bash
+  tags: zsh, ohmyzsh
   shell: chsh -s $(which zsh)
+
 - name: reload zsh
+  tags: zsh, ohmyzsh
   shell: source ~/.zshrc
   args:
     executable: /bin/bash
