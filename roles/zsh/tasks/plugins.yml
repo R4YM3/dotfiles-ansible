@@ -124,7 +124,7 @@
       neofetch
     backup: yes
 
-- name: put zsh default bash
+- name: put zsh default shell
   tags: zsh, ohmyzsh
   shell: chsh -s $(which zsh)
 
