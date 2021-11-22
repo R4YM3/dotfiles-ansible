@@ -36,11 +36,16 @@
     path: ~/.zshrc
   register: stat_rc_result
 
+- name: Delete current .zshrc
+  file:
+    state: absent
+    path: ~/.zshrc
+  when: not stat_rc_result.stat.exists
+
 - name: Creating new ~/.zshrc
   copy:
     src=~/.oh-my-zsh/templates/zshrc.zsh-template
     dest=~/.zshrc
-  when: not stat_rc_result.stat.exists
 
 - name: replace plugin
   lineinfile:
@@ -85,7 +90,6 @@
       bindkey -v
     backup: yes
     line: last
-  when: not stat_rc_result.stat.exists
 
 - name: Add autostart
   blockinfile:
@@ -95,7 +99,6 @@
       neofetch
     backup: yes
     line: last
-  when: not stat_rc_result.stat.exists
 
 - name: Set default editor
   blockinfile:
@@ -108,8 +111,6 @@
       fi
     backup: yes
     line: last
-  when: not stat_rc_result.stat.exists
-
 
 - name: Set $PATH
   blockinfile:
@@ -118,7 +119,6 @@
       export PATH="/usr/local/bin:$PATH"
     backup: yes
     line: last
-  when: not stat_rc_result.stat.exists
 
 - name: Setup nvm
   blockinfile:
@@ -130,7 +130,6 @@
       export PATH="/usr/local/bin:$PATH"
     backup: yes
     line: last
-  when: not stat_rc_result.stat.exists
 
 - name: Add whilte after command output
   blockinfile:
@@ -139,7 +138,6 @@
       PS1=$'\n'"$PS1"
     backup: yes
     line: last
-  when: not stat_rc_result.stat.exists
 
 - name: put zsh default bash
   shell: chsh -s $(which zsh)
