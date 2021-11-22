@@ -44,7 +44,7 @@
   file:
     state: absent
     path: ~/.zshrc
-  when: not stat_rc_result.stat.exists
+  when: stat_rc_result.stat.exists
 
 - name: Creating new ~/.zshrc
   tags: zsh, ohmyzsh
