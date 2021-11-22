@@ -89,7 +89,6 @@
     block: |
       bindkey -v
     backup: yes
-    line: last
 
 - name: Add autostart
   blockinfile:
@@ -98,7 +97,6 @@
       clear
       neofetch
     backup: yes
-    line: last
 
 - name: Set default editor
   blockinfile:
@@ -110,7 +108,6 @@
         export EDITOR='nvim'
       fi
     backup: yes
-    line: last
 
 - name: Set $PATH
   blockinfile:
@@ -118,7 +115,6 @@
     block: |
       export PATH="/usr/local/bin:$PATH"
     backup: yes
-    line: last
 
 - name: Setup nvm
   blockinfile:
@@ -129,7 +125,6 @@
       [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
       export PATH="/usr/local/bin:$PATH"
     backup: yes
-    line: last
 
 - name: Add whilte after command output
   blockinfile:
@@ -137,7 +132,6 @@
     block: |
       PS1=$'\n'"$PS1"
     backup: yes
-    line: last
 
 - name: put zsh default bash
   shell: chsh -s $(which zsh)
