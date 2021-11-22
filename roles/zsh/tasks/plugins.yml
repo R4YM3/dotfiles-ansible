@@ -82,55 +82,35 @@
     line: 'HIST_STAMPS="mm-dd-yyyy"'
     backrefs: yes
 
-
-- name: Command line as vim
+- name: Add custom config in .zshrc
   blockinfile:
     dest: ~/.zshrc
     block: |
-      bindkey -v
-    backup: yes
+      # set path
+      export PATH="/usr/local/bin:$PATH"
 
-- name: Add autostart
-  blockinfile:
-    dest: ~/.zshrc
-    block: |
-      clear
-      neofetch
-    backup: yes
-
-- name: Set default editor
-  blockinfile:
-    dest: ~/.zshrc
-    block: |
+      # setup default editor
       if [[ -n $SSH_CONNECTION ]]; then
         export EDITOR='vim'
       else
         export EDITOR='nvim'
       fi
-    backup: yes
 
-- name: Set $PATH
-  blockinfile:
-    dest: ~/.zshrc
-    block: |
-      export PATH="/usr/local/bin:$PATH"
-    backup: yes
+      # vim commands in shell
+      bindkey -v
 
-- name: Setup nvm
-  blockinfile:
-    dest: ~/.zshrc
-    block: |
+      # config nvm
       export NVM_DIR="{{ ansible_env.USER }}/.nvm"
       [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
       [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
       export PATH="/usr/local/bin:$PATH"
-    backup: yes
 
-- name: Add whilte after command output
-  blockinfile:
-    dest: ~/.zshrc
-    block: |
+      # command output on next line
       PS1=$'\n'"$PS1"
+
+      # run on start
+      clear
+      neofetch
     backup: yes
 
 - name: put zsh default bash
