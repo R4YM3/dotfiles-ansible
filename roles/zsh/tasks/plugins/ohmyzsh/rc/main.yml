@@ -1,0 +1,62 @@
+- name: replace thema
+  tags: zsh, ohmyzsh, zshrc
+  lineinfile:
+    path: ~/.zshrc
+    regexp: '^(.*)ZSH_THEME="robbyrussell"(.*)$'
+    line: 'ZSH_THEME="agnoster"'
+    backrefs: yes
+
+- name: Enable ENABLE_CORRECTION
+  tags: zsh, ohmyzsh, zshrc
+  replace:
+    path: ~/.zshrc
+    regexp: '# ENABLE_CORRECTION="true"'
+    replace: 'ENABLE_CORRECTION="true"'
+
+- name: ohmyzsh use plugins
+  tags: zsh, ohmyzsh, zshrc
+  replace:
+    path: ~/.zshrc
+    regexp: '^(.*)# If you come from bash you might have to change your $PATH.(.*)$'
+    replace: 'TEST BABY TEST'
+
+- name: Enable COMPLETION_WAITING_DOTS
+  tags: zsh, ohmyzsh, zshrc
+  replace:
+    path: ~/.zshrc
+    regexp: '# COMPLETION_WAITING_DOTS="true"'
+    replace: 'COMPLETION_WAITING_DOTS="true"'
+
+- name: Dutch scheme in HIST_STAMPS
+  tags: zsh, ohmyzsh, zshrc
+  replace:
+    path: ~/.zshrc
+    regexp: '# HIST_STAMPS="mm/dd/yyyy"'
+    replace: 'HIST_STAMPS="mm-dd-yyyy"'
+
+- import_tasks: exports.yml
+- import_tasks: config.yml
+- import_tasks: plugins.yml
+- import_tasks: aliases.yml
+
+- name: Add custom config in .zshrc
+  tags: zsh, ohmyzsh, zshrc
+  blockinfile:
+    dest: ~/.zshrc
+    block: |
+      # load all files in ...
+      for f in ~/.config/exports; do source $f; done
+      for f in ~/.config/config; do source $f; done
+      for f in ~/.config/aliases; do source $f; done
+      for f in ~/.config/plugins; do source $f; done
+    backup: yes
+
+- name: put zsh default shell
+  tags: zsh, ohmyzsh, zshrc
+  shell: chsh -s $(which zsh)
+
+- name: reload zsh
+  tags: zsh, ohmyzsh, zshrc
+  shell: source ~/.zshrc
+  args:
+    executable: /bin/zsh

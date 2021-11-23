@@ -1,0 +1,12 @@
+- name: Create development directory
+  tags: repositories, directories
+  file:
+    path: '{{ DEVELOPMENT_DIR }}'
+    state: directory
+    owner: '{{ ansible_env.USER }}'
+
+- name: repositories aliases'
+  tags: repositories, aliases
+  copy:
+    src: files/aliases/repositories.sh
+    dest: '{{ SHELL_ALIASES_DIR }}/'

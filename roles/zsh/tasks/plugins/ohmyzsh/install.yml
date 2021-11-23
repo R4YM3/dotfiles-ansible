@@ -1,0 +1,27 @@
+- name: install ohmyzsh dependecies
+  tags: zsh, ohmyzsh
+  become: "{{ ansible_distribution != 'MacOSX' }}"
+  package:
+    name:
+      - git
+    state: latest
+
+- name: Check if .oh-my-zsh exists
+  tags: zsh, ohmyzsh, zshrc
+  stat:
+    path: ~/.oh-my-zsh
+  register: stat_oh_my_zsh_result
+
+- name: Cloning oh-my-zsh
+  tags: zsh, ohmyzsh, zshrc
+  git:
+    repo: https://github.com/robbyrussell/oh-my-zsh
+    dest: ~/.oh-my-zsh
+    clone: yes
+  when: not stat_oh_my_zsh_result.stat.exists
+
+- name: Creating new ~/.zshrc
+  tags: zsh, ohmyzsh, zshrc
+  copy:
+    src=~/.oh-my-zsh/templates/zshrc.zsh-template
+    dest=~/.zshrc

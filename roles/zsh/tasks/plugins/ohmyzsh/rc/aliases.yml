@@ -1,0 +1,13 @@
+- name: Create aliases directories
+  tags: zsh, directories
+  file:
+    path: '{{ SHELL_ALIASES_DIR }}/'
+    state: directory
+    owner: '{{ ansible_env.USER }}'
+
+- name: Copying aliases into global aliases folder'
+  tags: zsh
+  copy:
+    src: files/aliases/
+    dest: '{{ SHELL_ALIASES_DIR }}/'
+    owner: '{{ ansible_env.USER }}'

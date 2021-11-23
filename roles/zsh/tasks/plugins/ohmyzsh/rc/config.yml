@@ -1,0 +1,21 @@
+- name: install ohmyzsh config dependecies
+  tags: zsh, ohmyzsh
+  become: "{{ ansible_distribution != 'MacOSX' }}"
+  package:
+    name:
+      - neofetch
+    state: latest
+
+- name: Create config directory
+  tags: zsh, directories
+  file:
+    path: '{{ SHELL_CONFIG_DIR }}/'
+    state: directory
+    owner: '{{ ansible_env.USER }}'
+
+- name: Copying config into global config folder'
+  tags: zsh
+  copy:
+    src: files/config/
+    dest: '{{ SHELL_CONFIG_DIR }}/'
+    owner: '{{ ansible_env.USER }}'

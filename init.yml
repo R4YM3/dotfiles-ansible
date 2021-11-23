@@ -1,19 +1,29 @@
 - hosts: localhost
+  vars:
+    HOME_DIR: '{{ ansible_env.HOME }}'
+    DEVELOPMENT_DIR: '{{ HOME_DIR }}/development'
+    CONFIG_DIR: '{{ HOME_DIR }}/.config'
+    NEOVIM_DIR: '{{ CONFIG_DIR }}/nvim'
+    TMUXINATOR_DIR : '{{ CONFIG_DIR }}/tmuxinator'
+    SHELL_ALIASES_DIR: '{{ ansible_env.HOME }}/.config/aliases'
+    SHELL_CONFIG_DIR: '{{ ansible_env.HOME }}/.config/config'
+    SHELL_EXPORTS_DIR: '{{ ansible_env.HOME }}/.config/exports'
+    SHELL_PLUGINS_DIR: '{{ ansible_env.HOME }}/.config/plugins'
   roles:
-    - role: directories
+    - role: zsh
 
-    - role: macos
     - role: cli
-    # - role: pip
     - role: homebrew_cask
     - role: apt
     - role: snap
+      #    - role: pip
 
     - role: ack
     - role: curl
     - role: git
+    - role: repositories
     - role: tmux
     - role: tmuxinator
     - role: vim
     - role: wget
-    - role: zsh
+

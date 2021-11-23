@@ -44,5 +44,5 @@
   tags: vim, aliases
   copy:
     src: files/aliases
-    dest: '{{ ALIASES_DIR }}/vim'
+    dest: '{{ SHELL_ALIASES_DIR }}/vim'
     owner: '{{ ansible_env.USER }}'

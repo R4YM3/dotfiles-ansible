@@ -17,5 +17,5 @@
   tags: tmuxinator, aliases
   copy:
     src: files/aliases
-    dest: '{{ ALIASES_DIR }}/tmuxinator'
+    dest: '{{ SHELL_ALIASES_DIR }}/tmuxinator'
     owner: '{{ ansible_env.USER }}'

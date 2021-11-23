@@ -1,0 +1,13 @@
+- name: Create export directory
+  tags: zsh, directories
+  file:
+    path: '{{ SHELL_EXPORTS_DIR }}/'
+    state: directory
+    owner: '{{ ansible_env.USER }}'
+
+- name: Copying exports into global exports folder'
+  tags: zsh
+  copy:
+    src: files/exports/
+    dest: '{{ SHELL_EXPORTS_DIR }}/'
+    owner: '{{ ansible_env.USER }}'

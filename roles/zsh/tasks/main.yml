@@ -1,2 +1,2 @@
 - import_tasks: install.yml
-- import_tasks: plugins.yml
+- import_tasks: plugins/ohmyzsh/main.yml

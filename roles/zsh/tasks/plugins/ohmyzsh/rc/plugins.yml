@@ -1,0 +1,41 @@
+- name: Create plugins directory
+  tags: zsh, ohmyzsh, directories
+  file:
+    path: '{{ SHELL_PLUGINS_DIR }}/'
+    state: directory
+    owner: '{{ ansible_env.USER }}'
+
+- name: Copying plugin into global plugins folder'
+  tags: zsh, ohmyzsh, directories
+  copy:
+    src: files/plugins/
+    dest: '{{ SHELL_PLUGINS_DIR }}/'
+    owner: '{{ ansible_env.USER }}'
+
+- name: ohmyzsh plugin autosuggest
+  tags: zsh, ohmyzsh, ohmyzsh-plugin
+  git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions.git
+    dest: ~/.oh-my-zsh/plugins/zsh-autosuggestions
+    clone: yes
+
+- name: ohmyzsh plugin syntax highlighting
+  tags: zsh, ohmyzsh, ohmyzsh-plugin
+  git:
+    repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+    dest: ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
+    clone: yes
+
+- name: ohmyzsh plugin clone zsh-nvm
+  tags: zsh, ohmyzsh, ohmyzsh-plugin
+  git:
+    repo: https://github.com/lukechilds/zsh-nvm.git
+    dest: ~/.oh-my-zsh/plugins/zsh-nvm
+    clone: yes
+
+- name: ohmyzsh enable plugins
+  tags: zsh, ohmyzsh, zshrc
+  replace:
+    path: ~/.zshrc
+    regexp: '(git)'
+    replace: 'aws git nvm npm zsh-syntax-highlighting zsh-autosuggestions'
