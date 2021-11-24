@@ -11,7 +11,6 @@
     SHELL_PLUGINS_DIR: '{{ ansible_env.HOME }}/.config/plugins'
   roles:
     - role: zsh
-
     - role: cli
     - role: homebrew_cask
     - role: apt
