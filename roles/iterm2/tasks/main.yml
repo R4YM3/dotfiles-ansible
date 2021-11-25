@@ -16,7 +16,7 @@
     - name: clone iterm2 dracula theme
       git:
         repo: https://github.com/dracula/iterm.git
-        dest: ~/.config/dracula/
+        dest: ~/.config/dracula/iterm/
         clone: yes
 
     - name:
