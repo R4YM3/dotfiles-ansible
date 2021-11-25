@@ -1,0 +1,15 @@
+- name: "macos: trackpad: set track pad clicking"
+  tags: macos, multitouch, trackpad
+  command: defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+
+- name: "macos: trackpad: Set multitouch trackpad clicking"
+  tags: macos, multitouch, trackpad
+  command: defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+
+- name: "macos: apple mouse: set Apple Mouse trackpad clicking"
+  tags: macos, multitouch, trackpad
+  command: defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+
+- name: "macos: apple mouse: set Apple Mouse trackpad clicking"
+  tags: macos, multitouch, trackpad
+  command: defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1

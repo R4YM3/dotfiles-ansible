@@ -1,87 +1,13 @@
-- name: "macos: finder: Enables ethernet for AirDrop"
-  tags: macos, finder, airdrop
-  command: defaults write com.apple.NetworkBrowser BrowseAllInterfaces 1
-
-- name: "macos: finder: show all filename extensions"
-  tags: macos, finder, extensions
-  command: defaults write NSGlobalDomain AppleShowAllExtensions -bool true
-
-- name: "macos: don't ask confirmation for change extension"
-  tags: macos, finder, extensions
-  command: defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
-
-- name: "macos: finder: when performing a search, search the current folder by default"
-  tags: macos, finder, search
-  command: defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
-
-- name: "macos: finder: Avoid creating .DS_Store files on network volumes"
-  tags: macos, finder, DS_Store
-  command: defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-
-- name: "macos: finder: show the ~/Library folder"
-  tags: macos, finder, library
-  command: chflags nohidden ~/Library
-
-- name: "macos: keyboard: set initial key repeat"
-  tags: macos, keyboard, key-repeat
-  command: defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
-
-- name: "macos: keyboard: set key repeat"
-  tags: macos, keyboard, key-repeat
-  command: defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
-
 - name: "macos: ui: set dark mode"
   tags: macos, dark-mode
   command: defaults write -g NSRequiresAquaSystemAppearance -bool true
-
-- name: "macos: trackpad: set track pad clicking"
-  tags: macos, multitouch, trackpad
-  command: defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
-
-- name: "macos: trackpad: Set multitouch trackpad clicking"
-  tags: macos, multitouch, trackpad
-  command: defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-
-- name: "macos: apple mouse: set Apple Mouse trackpad clicking"
-  tags: macos, multitouch, trackpad
-  command: defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-
-- name: "macos: apple mouse: set Apple Mouse trackpad clicking"
-  tags: macos, multitouch, trackpad
-  command: defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-
-- name: "macos: dock: remove apps"
-  tags: macos, dock, remove-apps
-  command: defaults write com.apple.dock persistent-apps -array
-
-- name: "macos: dock: smaller icons"
-  tags: macos, dock, smaller-icons
-  command: defaults write com.apple.dock tilesize -integer 32
-
-- name: "macos: dock: animation speed"
-  tags: macos, dock, animation-speed
-  command: defaults write com.apple.dock autohide-time-modifier -float 0.26
-
-- name: "macos: dock: enable autohide"
-  tags: macos, dock, autohide
-  command: defaults read com.apple.Dock autohide
-
-- name: "macos: dock: restart"
-  tags: macos, dock, restart
-  command: killall Dock
 
 - name: "macos: screenshots: downloads folder"
   tags: macos, screenshots, downloads
   command: defaults write com.apple.screencapture location ~/Downloads
 
-- name: "macos: quicklook: install plugins"
-  tags: macos, quicklook
-  homebrew_cask:
-    state: present
-    name: "{{ item }}"
-  with_items: "{{ quicklook_plugins }}"
-
-# - name: "macos: quicklook: plugin permissions"
-#   tags: macos, quicklook
-#   become_user: '{{ ansible_env.USER }}'
-#   shell: 'xattr -cr ~/Library/QuickLook/*.qlgenerator'
+- import_tasks: dock.yml
+- import_tasks: finder.yml
+- import_tasks: keyboard.yml
+- import_tasks: quicklook.yml
+- import_tasks: touch.yml

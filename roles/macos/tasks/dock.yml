@@ -1,0 +1,19 @@
+- name: "macos: dock: remove apps"
+  tags: macos, dock, remove-apps
+  command: defaults write com.apple.dock persistent-apps -array
+
+- name: "macos: dock: smaller icons"
+  tags: macos, dock, smaller-icons
+  command: defaults write com.apple.dock tilesize -integer 32
+
+- name: "macos: dock: animation speed"
+  tags: macos, dock, animation-speed
+  command: defaults write com.apple.dock autohide-time-modifier -float 0.26
+
+- name: "macos: dock: enable autohide"
+  tags: macos, dock, autohide
+  command: defaults read com.apple.Dock autohide
+
+- name: "macos: dock: restart"
+  tags: macos, dock, restart
+  command: killall Dock
