@@ -1,0 +1,2 @@
+HETWEBBUREAU_DIR: '{{ DEVELOPMENT_DIR }}/hetwebbureau/'
+RTL_DIR: '{{ DEVELOPMENT_DIR }}/rtl/'

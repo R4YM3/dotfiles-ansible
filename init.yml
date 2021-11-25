@@ -16,7 +16,7 @@
     - role: homebrew_cask
     - role: apt
     - role: snap
-      #    - role: pip
+      # - role: pip
 
     - role: ack
     - role: curl
@@ -27,5 +27,3 @@
     - role: tmuxinator
     - role: vim
     - role: wget
-
-

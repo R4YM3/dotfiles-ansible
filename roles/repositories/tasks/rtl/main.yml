@@ -1,0 +1,20 @@
+- name: Create RTL directory
+  tags: repositories, directories, rtl, github
+  file:
+    path: '{{ RTL_DIR }}'
+    state: directory
+    owner: '{{ ansible_env.USER }}'
+
+#- name: clone private repositories installer
+#  become_user: USER
+#  tags: repository, clone
+#  git:
+#    repo: git@bitbucket.org:R4YM3/private-repositories-installer.git
+#    dest: '{{ HETWEBBUREAU_DIR }}/private-repositories-installer'
+#    clone: yes
+#    key_file: '{{ HOME_DIR }}/.ssh/id_rsa'
+
+#- name: repositories installer | clone
+#  become_user: USER
+#  tags: repository, clone
+#  shell: "{{ HETWEBBUREAU_DIR }}/private-repositories-installer/install.sh {{HOME_DIR}}"

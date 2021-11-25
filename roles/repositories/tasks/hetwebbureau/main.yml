@@ -1,0 +1,9 @@
+- name: Create hetwebbureau directory
+  tags: repositories, directories, hetwebbureau, github
+  file:
+    path: '{{ HETWEBBUREAU_DIR }}'
+    state: directory
+    owner: '{{ ansible_env.USER }}'
+
+- import_tasks: github.yml
+- import_tasks: bitbucket.yml
