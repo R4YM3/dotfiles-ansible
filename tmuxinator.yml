@@ -1,0 +1,13 @@
+name: dotfiles-ansible-refactor
+root: ~/Development/hetwebbureau/dotfiles-ansible-refactor
+
+windows:
+  - Editor:
+      layout: main-vertical
+      panes:
+        - left:
+          - vim
+        - runserver:
+          - git status
+        - git:
+          - git status
