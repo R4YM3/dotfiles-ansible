@@ -1,0 +1,3 @@
+  - name: "macos: ui: set dark mode"
+    tags: macos, dark-mode
+    command: defaults write -g NSRequiresAquaSystemAppearance -bool true
