@@ -1,0 +1,34 @@
+- name: gnome | cursor | enable natural scrolling (cursor)
+  tags: gnome,cursor
+  become_user: '{{ USER }}'
+  dconf:
+    key: "/org/gnome/desktop/peripherals/cursor/natural-scroll"
+    value: "true"
+
+- name: gnome | peripherals | enable natural scrolling (touchpad)
+  tags: gnome,cursor
+  become_user: '{{ USER }}'
+  dconf:
+    key: "/org/gnome/desktop/peripherals/touchpad/natural-scroll"
+    value: "true"
+
+- name: gnome | peripherals | enable cursor acceleration (cursor)
+  tags: gnome,cursor
+  become_user: '{{ USER }}'
+  dconf:
+    key: "/org/gnome/desktop/peripherals/cursor/accel-profile"
+    value: "'adaptive'"
+
+- name: gnome | peripherals | increase cursor speed (cursor)
+  tags: gnome,cursor
+  become_user: '{{ USER }}'
+  dconf:
+    key: "/org/gnome/desktop/peripherals/cursor/speed"
+    value: "0.59999999999999998"
+
+- name: gnome | peripherals | increase cursor speed (touchpad)
+  tags: gnome,cursor
+  become_user: '{{ USER }}'
+  dconf:
+    key: "/org/gnome/desktop/peripherals/touchpad/speed"
+    value: "0.59999999999999998"

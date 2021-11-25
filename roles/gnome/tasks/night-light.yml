@@ -1,0 +1,27 @@
+- name: gnome | set manual night-light schedule
+  tags: gnome,night-light
+  become_user: '{{ USER }}'
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/color/night-light-schedule-automatic"
+    value: "false"
+
+- name: gnome | set manual night-light schedule start time
+  tags: gnome,night-light
+  become_user: '{{ USER }}'
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/color/night-light-schedule-from"
+    value: "23.0"
+
+- name: gnome | set manual night-light schedule stop time
+  tags: gnome,night-light
+  become_user: '{{ USER }}'
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/color/night-light-schedule-to"
+    value: "7.4999999999999982"
+
+- name: gnome | enable night-light
+  tags: gnome,night-light
+  become_user: '{{ USER }}'
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/color/night-light-enabled"
+    value: "true"

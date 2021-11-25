@@ -1,0 +1,21 @@
+# Note: Some of these packages are disabled, they depend on tracker which is currently being disabled
+- name: gnome | packages | install gnome packages
+  tags: gnome,gnome-packages
+  become: yes
+  package:
+    name:
+      - eog
+      - file-roller
+      - gedit
+      - gnome-backgrounds
+      - gnome-control-center
+      - gnome-disk-utility
+      - gnome-icon-theme
+      - gnome-shell
+      - gnome-shell-extensions
+      - gnome-system-monitor
+      - gnome-terminal
+      - gnome-todo
+      - gnome-tweaks
+      - nautilus
+  when: ansible_distribution in ["Debian", "Ubuntu"]

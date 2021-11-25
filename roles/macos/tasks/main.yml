@@ -1,13 +1,18 @@
-- name: "macos: ui: set dark mode"
-  tags: macos, dark-mode
-  command: defaults write -g NSRequiresAquaSystemAppearance -bool true
+- name: macos
+  tags: macos
+  block:
+  - name: "macos: ui: set dark mode"
+    tags: macos, dark-mode
+    command: defaults write -g NSRequiresAquaSystemAppearance -bool true
 
-- name: "macos: screenshots: downloads folder"
-  tags: macos, screenshots, downloads
-  command: defaults write com.apple.screencapture location ~/Downloads
+  - name: "macos: screenshots: downloads folder"
+    tags: macos, screenshots, downloads
+    command: defaults write com.apple.screencapture location ~/Downloads
 
-- import_tasks: dock.yml
-- import_tasks: finder.yml
-- import_tasks: keyboard.yml
-- import_tasks: quicklook.yml
-- import_tasks: touch.yml
+  - import_tasks: dock.yml
+  - import_tasks: finder.yml
+  - import_tasks: keyboard.yml
+  - import_tasks: quicklook.yml
+  - import_tasks: touch.yml
+
+  when: ansible_distribution == 'MacOSX'

@@ -1,0 +1,13 @@
+- name: gnome | keyboard | delay
+  tags: gnome, keyboard
+  become_user: '{{ USER }}'
+  dconf:
+    key: '/org/gnome/desktop/peripherals/keyboard/delay'
+    value: 'uint32 250'
+
+- name: gnome | keyboard | repeat interval
+  tags: gnome, keyboard
+  become_user: '{{ USER }}'
+  dconf:
+    key: '/org/gnome/desktop/peripherals/keyboard/repeat-interval'
+    value: 'uint32 30'

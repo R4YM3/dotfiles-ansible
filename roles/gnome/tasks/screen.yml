@@ -1,0 +1,17 @@
+- name: gnome | screen | lock screen after 15 min
+  tags: gnome,screen
+  dconf:
+    key: '/org/gnome/desktop/session/idle-delay'
+    value: 'uint32 900'
+
+- name: gnome | screen | disable lock screen notifications
+  tags: gnome,screen
+  dconf:
+    key: '/org/gnome/desktop/notifications/show-in-lock-screen'
+    value: 'true'
+
+- name: gnome | screen | disable screen lock
+  tags: gnome,screen
+  dconf:
+    key: '/org/gnome/desktop/screensaver/lock-enabled'
+    value: 'false'

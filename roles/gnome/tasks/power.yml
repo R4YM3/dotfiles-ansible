@@ -1,0 +1,39 @@
+- name: gnome | power | set power button behavior
+  tags: gnome,power
+  become_user: '{{ USER }}'
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/power/power-button-action"
+    value: "'suspend'"
+
+- name: gnome | power | enable automatic suspend while plugged in to ac
+  tags: gnome,power
+  become_user: '{{ USER }}'
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/power/sleep-inactive-ac-type"
+    value: "'suspend'"
+
+- name: gnome | power | set timeout for automatic suspend while plugged in to ac
+  tags: gnome,power
+  become_user: '{{ USER }}'
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/power/sleep-inactive-ac-timeout"
+    value: "2700"
+
+- name: gnome | power | enable automatic suspend while on battery
+  tags: gnome,power
+  become_user: '{{ USER }}'
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/power/sleep-inactive-battery-type"
+    value: "'suspend'"
+
+- name: gnome | power | set timeout for automatic suspend while plugged in to ac
+  tags: gnome,power
+  become_user: '{{ USER }}'
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/power/sleep-inactive-battery-timeout"
+    value: "1500"
+
+- name: gnome | power | disable screen dim
+  dconf:
+    key: '/org/gnome/settings-daemon/plugins/power/idle-dim'
+    value: 'false'

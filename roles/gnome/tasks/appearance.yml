@@ -1,0 +1,37 @@
+- name: gnome | appearance | copy wallpaper file
+  tags: gnome,gnome-wallpaper
+  become: yes
+  copy:
+    src: files/forest-wallpaper.jpeg
+    dest: /usr/share/backgrounds/forest-wallpaper.jpeg
+    owner: root
+    group: root
+    mode: 0644
+
+- name: gnome | appearance | set wallpaper
+  tags: gnome,gnome-wallpaper
+  become_user: '{{ USER }}'
+  dconf:
+    key: "/org/gnome/desktop/background/picture-uri"
+    value: "'file:///usr/share/backgrounds/forest-wallpaper.jpeg'"
+
+- name: gnome | appearance | set wallpaper position
+  tags: gnome,gnome-wallpaper
+  become_user: '{{ USER }}'
+  dconf:
+    key: "/org/gnome/desktop/background/picture-options"
+    value: "'zoom'"
+
+- name: gnome | appearance | set lock screen background
+  tags: gnome,gnome-lockscreen
+  become_user: '{{ USER }}'
+  dconf:
+    key: "/org/gnome/desktop/screensaver/picture-uri"
+    value: "'file:///usr/share/backgrounds/forest-wallpaper.jpeg'"
+
+- name: gnome | appearance | set lock screen background position
+  tags: gnome,gnome-lockscreen
+  become_user: '{{ USER }}'
+  dconf:
+    key: "/org/gnome/desktop/screensaver/picture-options"
+    value: "'zoom'"

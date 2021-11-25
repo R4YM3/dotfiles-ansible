@@ -1,0 +1,12 @@
+- name: gnome
+  tags: gnome
+  block:
+  - import_tasks: packages.yml
+  - import_tasks: appearance.yml
+  - import_tasks: cursor.yml
+  - import_tasks: keyboard.yml
+  - import_tasks: nautilus.yml
+  - import_tasks: night-light.yml
+  - import_tasks: power.yml
+  - import_tasks: screen.yml
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
