@@ -1,0 +1,50 @@
+- name: gnome-terminal
+  tags: gnome-ternimal
+  block:
+    - name: gnome | terminal | theme | clone dracula theme
+      tags: gnome, terminal, theme
+      git:
+        repo: https://github.com/dracula/gnome-terminal.git
+        dest: '{{ TERMINAL_THEMES_DIR }}/dracula'
+        clone: yes
+
+    - name: gnome | terminal | make new default profile
+      tags: gnome, terminal, theme
+      shell: >
+        profile_id="$(uuidgen)"
+        dconf write $dconfdir/default "'$profile_id'"
+        dconf write $dconfdir/list "['$profile_id']"
+        profile_dir="$dconfdir/:$profile_id"
+        dconf write $profile_dir/visible-name "'Default'"
+
+    # https://github.com/dracula/gnome-terminal/issues/11
+    - name: gnome | terminal | install dracula theme
+      tags: gnome, terminal, theme
+      become: yes
+      shell: >
+        'cd {{ TERMINAL_THEMES_DIR }}/dracula
+        && ./install.sh -s Dracula -p Default --install-dircolors'
+
+    - name: gnome | terminal | hide menubar
+      tags: gnome, terminal
+      dconf:
+        key: '/org/gnome/terminal/legacy/default-show-menubar'
+        value: 'true'
+
+    - name: gnome | terminal | hide scrollbar
+      tags: gnome, terminal
+      dconf:
+        key: '/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/scrollbar-policy'
+        value: "'never'"
+
+    - name: gnome | terminal | install font
+      tags: gnome, terminal, firecode
+      shell: 'output=~/Downloads/FiraCode.zip; wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip --output-document=${output} && unzip ${output} -d ~/.fonts && fc-cache -fv ;'
+
+    - name: gnome | terminal | set terminal font to firacode
+      tags: gnome, terminal
+      dconf:
+        key: '/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/use-system-font'
+        value: 'false'
+
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'

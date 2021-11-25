@@ -23,6 +23,7 @@
     - role: curl
     - role: git
     - role: gnome
+    - role: gnome-terminal
     - role: iterm2
     - role: repositories
     - role: tmux
