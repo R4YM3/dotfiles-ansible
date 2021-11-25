@@ -1,0 +1,25 @@
+- name: iterm2
+  tags: iterm2, macos
+  block:
+    - name: Tap a Homebrew fonts repository
+      homebrew_tap:
+        name: homebrew/cask-fonts
+
+    - name: install iterm2 and font-fira-code-nerd-font
+      become: no
+      homebrew_cask:
+        state: present
+        name:
+          - iterm2
+          - font-fira-code-nerd-font
+
+    - name: clone iterm2 dracula theme
+      git:
+        repo: https://github.com/dracula/iterm.git
+        dest: ~/.config/dracula/
+        clone: yes
+
+    - name:
+      shell: open ~/.config/dracula/
+
+  when: ansible_distribution == 'MacOSX'

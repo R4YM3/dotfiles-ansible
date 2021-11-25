@@ -5,7 +5,6 @@ homebrew_cask:
   - gitkraken
   - gitup
   - google-chrome
-  - iterm2
   - macdown
   - microsoft-teams
   - notion
