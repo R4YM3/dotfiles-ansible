@@ -10,10 +10,10 @@ Before install first setup SSH keys.
 
 To install clone  repository
 ```
-git clone git@github.com:R4YM3/dotfiles-ansible-refactor.git
+$ git clone git@github.com:R4YM3/dotfiles-ansible-refactor.git
 ```
 cd into repository:
 ```
-ansible-playbook init.yml
+$ ./install.sh
 ```
 
