@@ -1,5 +1,5 @@
-name: dotfiles-ansible-refactor
-root: ~/Development/hetwebbureau/dotfiles-ansible-refactor
+name: dotfiles-ansible
+root: ~/Development/hetwebbureau/dotfiles-ansible
 
 windows:
   - Editor:
