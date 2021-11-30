@@ -17,3 +17,12 @@ cd into repository:
 $ ./install.sh
 ```
 
+## Shell
+Files in the below mentioned folders are sourced in order of writing.
+
+- ~/.config/exports
+- ~/.config/config
+- ~/.config/aliases
+- ~/.config/plugins
+
+_This makes it easy to add and maintain_
