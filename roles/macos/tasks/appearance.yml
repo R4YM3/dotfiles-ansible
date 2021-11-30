@@ -1,3 +1,7 @@
   - name: "macos: ui: set dark mode"
     tags: macos, dark-mode
     command: defaults write -g NSRequiresAquaSystemAppearance -bool true
+
+- name: "macos: ui: autohide menubar"
+  tags: macos, Menubar
+  command: defaults write NSGlobalDomain _HIHideMenuBar -bool true
