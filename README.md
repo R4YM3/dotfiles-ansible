@@ -6,7 +6,10 @@ It will install and config all my favorite apps and command interfaces. To finis
 ## Screenshot
 ![Mac OS Iterm2 with nvim and tmux screenshot](https://raw.githubusercontent.com/R4YM3/dotfiles-ansible-refactor/main/screenshot.png)
 
-Before install first setup SSH keys.
+
+## How to install
+
+_Before install first setup SSH keys._
 
 To install clone  repository
 ```
@@ -17,3 +20,12 @@ cd into repository:
 $ ./install.sh
 ```
 
+## Shell
+Files in the below mentioned folders are sourced in order of writing.
+
+- ~/.config/exports
+- ~/.config/config
+- ~/.config/aliases
+- ~/.config/plugins
+
+_This makes it easy to add and maintain_
