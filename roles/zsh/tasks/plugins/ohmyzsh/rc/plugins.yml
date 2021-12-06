@@ -38,4 +38,4 @@
   replace:
     path: ~/.zshrc
     regexp: '(git)'
-    replace: 'aws git nvm npm zsh-syntax-highlighting zsh-autosuggestions'
+    replace: 'aws git zsh-nvm npm zsh-syntax-highlighting zsh-autosuggestions'
