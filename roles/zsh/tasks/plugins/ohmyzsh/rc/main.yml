@@ -36,6 +36,7 @@
   tags: zsh, ohmyzsh, zshrc
   blockinfile:
     dest: ~/.zshrc
+    insertbefore: BOF
     block: |
       # load all files in ...
       for a in ~/.config/exports/*; do source $a; done
