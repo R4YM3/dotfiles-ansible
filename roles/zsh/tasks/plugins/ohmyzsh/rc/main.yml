@@ -50,9 +50,3 @@
       for c in ~/.config/aliases/*; do source $c; done
       for d in ~/.config/plugins/*; do source $d; done
     backup: yes
-
-- name: reload zsh
-  tags: zsh, ohmyzsh, zshrc
-  shell: source ~/.zshrc
-  args:
-    executable: /bin/zsh
