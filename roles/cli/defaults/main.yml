@@ -10,6 +10,7 @@ cli:
   - lolcat
   - lynx
   - make
+  - node
   - openconnect
   # - powerline
   - python3
