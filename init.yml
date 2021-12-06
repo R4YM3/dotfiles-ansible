@@ -11,20 +11,19 @@
     SHELL_EXPORTS_DIR: '{{ ansible_env.HOME }}/.config/exports'
     SHELL_PLUGINS_DIR: '{{ ansible_env.HOME }}/.config/plugins'
   roles:
-
     - role: zsh
     - role: cli
     - role: homebrew_cask
     - role: apt
     - role: snap
       # - role: pip
-
     - role: ack
     - role: curl
     - role: git
     - role: gnome
     - role: gnome-terminal
     - role: iterm2
+    - role: macos
     - role: repositories
     - role: tmux
     - role: tmuxinator
