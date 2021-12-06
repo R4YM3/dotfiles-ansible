@@ -10,7 +10,3 @@
   copy:
     src: files/aliases/repositories.sh
     dest: '{{ SHELL_ALIASES_DIR }}/'
-
-
-- import_tasks: hetwebbureau/main.yml
-- import_tasks: rtl/main.yml
