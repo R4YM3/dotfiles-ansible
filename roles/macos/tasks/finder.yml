@@ -25,3 +25,14 @@
 - name: "macos: finder: column view as default"
   tags: macos, finder
   command: defaults write com.apple.Finder FXPreferredViewStyle clmvx
+
+- name: macos: install mysides to manage favorites
+  tags: macos, finder, favorites
+  become: no
+  homebrew_cask:
+    state: present
+    name: mysides
+
+- name: "macos: finder: favorites: development dir"
+  tags: macos, finder, favorites
+  command: "mysides append Development {{ DEVELOPMENT_DIR }}"
