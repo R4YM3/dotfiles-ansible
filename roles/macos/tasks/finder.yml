@@ -21,3 +21,7 @@
 - name: "macos: finder: show the ~/Library folder"
   tags: macos, finder, library
   command: chflags nohidden ~/Library
+
+- name: "macos: finder: column view as default"
+  tags: macos, finder
+  command: defaults write com.apple.Finder FXPreferredViewStyle clmvx
