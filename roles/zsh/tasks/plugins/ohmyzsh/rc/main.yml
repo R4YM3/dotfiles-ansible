@@ -13,13 +13,6 @@
     regexp: '# ENABLE_CORRECTION="true"'
     replace: 'ENABLE_CORRECTION="true"'
 
-- name: ohmyzsh use plugins
-  tags: zsh, ohmyzsh, zshrc
-  replace:
-    path: ~/.zshrc
-    regexp: '^(.*)# If you come from bash you might have to change your $PATH.(.*)$'
-    replace: 'TEST BABY TEST'
-
 - name: Enable COMPLETION_WAITING_DOTS
   tags: zsh, ohmyzsh, zshrc
   replace:
