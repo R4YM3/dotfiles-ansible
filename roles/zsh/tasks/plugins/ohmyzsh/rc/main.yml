@@ -51,10 +51,6 @@
       for d in ~/.config/plugins/*; do source $d; done
     backup: yes
 
-- name: put zsh default shell
-  tags: zsh, ohmyzsh, zshrc
-  shell: chsh -s $(which zsh)
-
 - name: reload zsh
   tags: zsh, ohmyzsh, zshrc
   shell: source ~/.zshrc
