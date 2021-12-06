@@ -1,3 +1,10 @@
+- name: Copying aliases into global aliases folder'
+  tags: macos, finder, aliases 
+  copy:
+    src: files/aliases/
+    dest: '{{ SHELL_ALIASES_DIR }}/'
+    owner: '{{ ansible_env.USER }}'
+
 - name: "macos: finder: Enables ethernet for AirDrop"
   tags: macos, finder, airdrop
   command: defaults write com.apple.NetworkBrowser BrowseAllInterfaces 1
@@ -26,7 +33,7 @@
   tags: macos, finder
   command: defaults write com.apple.Finder FXPreferredViewStyle clmvx
 
-- name: macos: install mysides to manage favorites
+- name: "macos: install mysides to manage favorites"
   tags: macos, finder, favorites
   become: no
   homebrew_cask:
