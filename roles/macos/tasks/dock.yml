@@ -12,7 +12,7 @@
 
 - name: "macos: dock: enable autohide"
   tags: macos, dock, autohide
-  command: defaults read com.apple.Dock autohide
+  command: defaults write com.apple.Dock autohide 1
 
 - name: "macos: dock: restart"
   tags: macos, dock, restart
