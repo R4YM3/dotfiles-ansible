@@ -31,6 +31,6 @@ Files in the below mentioned folders are sourced in order of writing.
 _This makes it easy to add and maintain_
 
 ## Post install on MacOs
-- Start nvim to which will automatically install plugins
+- Start nvim to automatically install plugins
 - Iterm2: Import Dracula theme (~/.config/dracula)
 - Iterm2: Set FireCode Nerd Font Mono as font
