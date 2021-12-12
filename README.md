@@ -33,5 +33,6 @@ _This makes it easy to add and maintain_
 ## Post install on MacOs
 - Iterm2: Import Dracula theme (~/.config/dracula)
 - Iterm2: Set FireCode Nerd Font Mono as font
+- Set tab as an additional escape
 - Start nvim to automatically install plugins
 
