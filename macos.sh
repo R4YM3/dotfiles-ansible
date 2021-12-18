@@ -1,6 +1,9 @@
 #  Apple's command-line tools
 xcode-select --install
 
+# Install rosetta
+/usr/sbin/softwareupdate --install-rosetta --agree-to-license
+
 which -s brew
 if [[ $? != 0 ]] ; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
