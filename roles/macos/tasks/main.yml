@@ -10,6 +10,7 @@
   - import_tasks: finder.yml
   - import_tasks: keyboard.yml
   - import_tasks: quicklook.yml
+  - import_tasks: screenshot.yml
   - import_tasks: touch.yml
 
   when: ansible_distribution == 'MacOSX'

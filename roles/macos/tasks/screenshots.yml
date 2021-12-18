@@ -1,0 +1,12 @@
+- name: "macos: screensot: save in downloads folder"
+  tags: macos, screenshot, downloads folder 
+  command: defaults write com.apple.screencapture ~/Downloads
+
+- name: "macos: screensot: no shadow"
+  tags: macos, screenshot, no shadow 
+  command: defaults write com.apple.screencapture disable-shadow true
+
+- name: "macos: screensot: resert SystemUIServer"
+  tags: macos, screenshot, restart SystemUIServer
+  command: killall SystemUIServer
+
