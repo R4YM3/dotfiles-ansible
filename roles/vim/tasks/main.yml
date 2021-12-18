@@ -29,9 +29,9 @@
 #      - python3
 #      - python3-pip
 
-#- name: vim | plugin | fix coc python error
-#  tags: vim, plugin, coc, fix
-#  shell: 'python3 -m pip install --user --upgrade pynvim'
+- name: vim | plugin | fix coc python error
+  tags: vim, plugin, coc, fix
+  shell: 'python3 -m pip install --user --upgrade pynvim'
 
 - name: vim | install | .ctags
   tags: vim, dotfile, ctags
