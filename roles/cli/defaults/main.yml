@@ -5,6 +5,7 @@ cli:
   - docker
   - docker-compose
   - ffmpeg
+  - gnu-sed
   # - fonts-powerline
   - htop
   - lolcat
