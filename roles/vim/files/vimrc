@@ -2,24 +2,24 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 syntax on
 
 let mapleader=" "
-filetype indent on                  " load filetype-specific indent files
+filetype indent on                  " load filetype-specific indent files "
 
 set autoread                        " automatically re-read files if unmodified inside Vim. "
 set backspace=indent,eol,start      " allow backspace in insert mode "
 set belloff=all                     " no sound and flashing "
-set clipboard=unnamed               " use normal clipboard
+set clipboard=unnamed               " use normal clipboard "
 set cmdheight=1                     " command line height "
 set noswapfile                      " disable swap files "
 set display+=lastline               " always try to show a paragraph’s last line. "
 set encoding=utf-8                  " use an encoding that supports unicode "
 set expandtab                       " tabs are spaces "
-set shiftwidth=2                    " 2 spaces as default tab width"
+set shiftwidth=2                    " 2 spaces as default tab width "
 set foldenable                      " enable folding "
 set foldlevelstart=10               " open most folds by default "
 set foldnestmax=10                  " 10 nested fold max "
 set formatoptions-=t                " do not automatically wrap text when typing "
 set history=1000                    " increase the undo limit "
-set hlsearch                        " highlight matches
+set hlsearch                        " highlight matches "
 set ignorecase                      " ignore case when searching "
 set incsearch                       " search as characters are entered "
 set laststatus=2                    " always show status line "
@@ -28,7 +28,7 @@ set linespace=0
 set list                            " show “invisible” characters "
 set nocursorcolumn                  " don't paint cursor column | performance "
 set noerrorbells                    " no error bells "
-set nospell                         " remove spelling check"
+set nospell                         " remove spelling check "
 set nowrap                          " do not automatically wrap on load " 
 set number                          " line numbers " 
 set relativenumber                  " relative numbers "
@@ -38,8 +38,8 @@ set scrolljump=8                    " scroll 8 lines at a time at bottom/top | p
 set scrolloff=5                     " keep at least 5 lines above/below "
 set showbreak=+++                   " Wrap-broken line prefix "
 set sidescrolloff=5                 " keep at least 5 lines left/right "
-set showcmd                         " show command in bottom bar, showcmd shows the last command entered in the very bottom right
-set showmatch                       " highlight matching [{()}]
+set showcmd                         " show command in bottom bar, showcmd shows the last command entered in the very bottom right "
+set showmatch                       " highlight matching [{()}] "
 set title                           " set the window’s title, reflecting the file currently being edited. "
 set wildignore+=.pyc,.swp,ctags     " ignore files matching these patterns when opening files based on a glob pattern "
 set wildmenu                        " enhance command-line completion "
