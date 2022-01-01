@@ -59,15 +59,15 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" Install vim plug if not installed
-" Install missing plugins on start
-" https://github.com/junegunn/vim-plug/issues/225#issuecomment-891314455
+" Install vim plug if not installed "
+" Install missing plugins on start "
+" https://github.com/junegunn/vim-plug/issues/225#issuecomment-891314455 "
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 endif
 
-" Install missing plugins on Vim startup
+" Install missing plugins on Vim startup "
 autocmd VimEnter *
   \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \|   PlugInstall --sync | q
@@ -101,7 +101,7 @@ Plug 'altercation/vim-colors-solarized'         " Solarized theme "
 Plug 'dracula/vim', { 'as': 'dracula' }         " Dracula theme "
 
 Plug 'aklt/plantuml-syntax'                     " PlantUML "
-Plug 'tyru/open-browser.vim'                    " required by PlantUML previewer"
+Plug 'tyru/open-browser.vim'                    " required by PlantUML previewer "
 Plug 'weirongxu/plantuml-previewer.vim'         " PlantUML previewer "
 
 "
@@ -110,7 +110,7 @@ Plug 'weirongxu/plantuml-previewer.vim'         " PlantUML previewer "
 Plug 'kien/ctrlp.vim'                           " fuzzy search "
 Plug 'tacahiroy/ctrlp-funky'                    " fuzzy find extension to search through definitions "
 nmap <leader>p :CtrlP<cr>
-nnoremap <leader>. :CtrlPTag<cr>                " Search in Ctags
+nnoremap <leader>. :CtrlPTag<cr>                " Search in ctags "
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](node_modules|bower_components|dist|build|coverage)|(\.(git|hg|svn)|\_site)$',
   \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg,ctags,tags)$',
@@ -124,7 +124,7 @@ Plug 'ryanoasis/vim-devicons'                   " icons in sidebar "
 nmap <leader>n :NERDTreeToggle<cr>
 let NERDTreeShowHidden=1                        " show hidden files "
 
-let g:NERDTreeChDirMode       = 2               " Use NerdTree folder as CTRL search directory
+let g:NERDTreeChDirMode       = 2               " Use NerdTree folder as CTRL search directory "
 let g:ctrlp_working_path_mode = 'rw'
 let g:NERDTreeIgnore = ['\.pyc$', '\.swp']
 
