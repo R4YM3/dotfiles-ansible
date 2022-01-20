@@ -34,4 +34,10 @@
   become_user: '{{ USER }}'
   dconf:
     key: "/org/gnome/desktop/screensaver/picture-options"
-    value: "'zoom'"
+    value: "'zoom'"    
+ 
+- name: gnome | appearance | disable dock
+  become_user: '{{ USER }}'
+  apt:
+    name: gnome-shell-extension-ubuntu-dock
+    state: absent
