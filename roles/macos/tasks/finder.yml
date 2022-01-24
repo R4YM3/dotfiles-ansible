@@ -42,4 +42,4 @@
 
 - name: "macos: finder: favorites: development dir"
   tags: macos, finder, favorites
-  command: "mysides append Development {{ DEVELOPMENT_DIR }}"
+  command: "mysides append Development file://{{ DEVELOPMENT_DIR }}"

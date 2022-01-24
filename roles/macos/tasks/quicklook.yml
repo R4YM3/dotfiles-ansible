@@ -5,7 +5,8 @@
     name: "{{ item }}"
   with_items: "{{ quicklook_plugins }}"
 
-- name: "macos: quicklook: plugin permissions"
-  tags: macos, quicklook
-  become_user: '{{ ansible_env.USER }}'
-  shell: 'xattr -cr ~/Library/QuickLook/*.qlgenerator'
+# Needs to be done as post install
+# - name: "macos: quicklook: plugin permissions"
+#  tags: macos, quicklook
+#  become_user: '{{ ansible_env.USER }}'
+#  shell: 'xattr -cr ~/Library/QuickLook/*.qlgenerator'
