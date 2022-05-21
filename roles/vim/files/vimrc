@@ -157,7 +157,7 @@ hi IndentGuidesEven ctermbg=black
 " prettier
 "
 Plug 'prettier/vim-prettier',{ 'do': 'npm install' }" Makes code pretty "
-let g:prettier#autoformat = 0
+let g:prettier#autoformat = 1
 " autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync "Auto prettier when saving
 
 "
