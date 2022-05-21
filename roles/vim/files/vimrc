@@ -8,7 +8,7 @@ set autoread                        " automatically re-read files if unmodified 
 set backspace=indent,eol,start      " allow backspace in insert mode "
 set belloff=all                     " no sound and flashing "
 set clipboard=unnamed               " use normal clipboard "
-set cmdheight=1                     " command line height "
+set cmdheight=2                     " command line height "
 set noswapfile                      " disable swap files "
 set display+=lastline               " always try to show a paragraph’s last line. "
 set encoding=utf-8                  " use an encoding that supports unicode "
