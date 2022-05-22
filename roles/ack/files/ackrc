@@ -25,6 +25,7 @@
 --ignore-dir=jest-coverage/
 --ignore-dir=cypress-coverage/
 --ignore-dir=.nyc_output/
+--ignore-dir=.next/
 
 --ignore-file=is:tags
 --ignore-file=is:stats.json
