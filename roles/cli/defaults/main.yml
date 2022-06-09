@@ -1,5 +1,6 @@
 cli:
   - awscli
+  - azure-cli
   - catimg
   - cmake
   - docker
@@ -12,6 +13,7 @@ cli:
   - lynx
   - make
   - node
+  - nginx
   - openconnect
   # - powerline
   - python3
