@@ -9,6 +9,7 @@ cli:
   - gnu-sed
   # - fonts-powerline
   - htop
+  - lazygit
   - lolcat
   - lynx
   - make
