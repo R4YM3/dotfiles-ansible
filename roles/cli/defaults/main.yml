@@ -18,5 +18,6 @@ cli:
   - openconnect
   # - powerline
   - python3
+  - ribgrep
   - wget
   - zsh
