@@ -1,0 +1,5 @@
+npm:
+  - aws-amplify
+  - expo-cli
+  - http-server
+  - nodemon

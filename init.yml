@@ -24,6 +24,7 @@
     - role: gnome-terminal
     - role: iterm2
     - role: macos
+    - role: npm
     - role: repositories
     - role: tmux
     - role: tmuxinator
