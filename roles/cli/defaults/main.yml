@@ -6,6 +6,7 @@ cli:
   - docker
   - docker-compose
   - ffmpeg
+  - gitui
   - gnu-sed
   # - fonts-powerline
   - htop
