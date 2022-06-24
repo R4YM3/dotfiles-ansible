@@ -154,6 +154,7 @@ lvim.plugins = {
   { "f-person/git-blame.nvim" },
   { "folke/tokyonight.nvim" },
   { 'Mofiqul/dracula.nvim' },
+  { "danilamihailov/beacon.nvim" },
   {
     "windwp/nvim-ts-autotag",
     event = "InsertEnter",
