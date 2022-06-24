@@ -151,6 +151,7 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- additional plugins
 lvim.plugins = {
   { "christoomey/vim-tmux-navigator" },
+  { "f-person/git-blame.nvim" },
   { "folke/tokyonight.nvim" },
   { 'Mofiqul/dracula.nvim' },
   {
