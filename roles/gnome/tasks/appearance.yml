@@ -36,7 +36,6 @@
     key: "/org/gnome/desktop/screensaver/picture-options"
     value: "'zoom'"    
  
->>>>>>> e873db4fffd3efc372f265f083b3c211fce5d67b
 - name: gnome | appearance | disable dock
   become_user: '{{ USER }}'
   apt:
