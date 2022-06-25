@@ -1,5 +1,6 @@
 homebrew_cask:
   - 1password
+  - chromium
   - cyberduck
   - firefox
   - gitkraken

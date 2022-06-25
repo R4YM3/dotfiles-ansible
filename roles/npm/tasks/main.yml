@@ -1,0 +1,6 @@
+- name: npm | install
+  tags: npm, install
+  package:
+    state: latest
+    name: "{{ item }}"
+  with_items: "{{ npm }}"

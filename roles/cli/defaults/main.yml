@@ -1,19 +1,24 @@
 cli:
   - awscli
+  - azure-cli
   - catimg
   - cmake
   - docker
   - docker-compose
   - ffmpeg
+  - gitui
   - gnu-sed
   # - fonts-powerline
   - htop
+  - lazygit
   - lolcat
   - lynx
   - make
   - node
+  - nginx
   - openconnect
   # - powerline
   - python3
+  - ribgrep
   - wget
   - zsh

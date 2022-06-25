@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-alias vim="nvim"
-alias vi="nvim"
+alias lvim="/Users/rschweers/.local/bin/lvim"
+alias vim="lvim"
+alias vi="lvim"

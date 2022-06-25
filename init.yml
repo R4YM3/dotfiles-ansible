@@ -4,7 +4,7 @@
     HOME_DIR: '{{ ansible_env.HOME }}'
     DEVELOPMENT_DIR: '{{ HOME_DIR }}/development'
     CONFIG_DIR: '{{ HOME_DIR }}/.config'
-    NEOVIM_DIR: '{{ CONFIG_DIR }}/nvim'
+    LUNARVIM_DIR: '{{ CONFIG_DIR }}/lvim'
     TMUXINATOR_DIR : '{{ CONFIG_DIR }}/tmuxinator'
     SHELL_ALIASES_DIR: '{{ ansible_env.HOME }}/.config/aliases'
     SHELL_CONFIG_DIR: '{{ ansible_env.HOME }}/.config/config'
@@ -24,6 +24,7 @@
     - role: gnome-terminal
     - role: iterm2
     - role: macos
+    - role: npm
     - role: repositories
     - role: tmux
     - role: tmuxinator
