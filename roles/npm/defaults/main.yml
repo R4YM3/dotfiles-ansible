@@ -3,3 +3,4 @@ npm:
   - expo-cli
   - http-server
   - nodemon
+  - firebase-tools
