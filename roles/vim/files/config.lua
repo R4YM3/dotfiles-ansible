@@ -196,6 +196,9 @@ lvim.plugins = {
     end
   },
   {
+    "steelsojka/headwind.nvim"
+  },
+  {
     "nvim-telescope/telescope-project.nvim",
     event = "BufWinEnter",
     setup = function()
