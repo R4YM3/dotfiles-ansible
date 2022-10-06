@@ -70,6 +70,7 @@ lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
+  "astro",
   "bash",
   "c",
   "javascript",
@@ -213,11 +214,11 @@ lvim.plugins = {
 }
 
 -- autocommands (https://neovim.io/doc/user/autocmd.html)
--- vim.api.nvim_create_autocmd("bufenter", {
---   pattern = { "*.json", "*.jsonc" },
---   -- enable wrap mode for json files only
---   command = "setlocal wrap",
--- })
+vim.api.nvim_create_autocmd("bufenter", {
+  pattern = { "*.astro" },
+  -- enable wrap mode for json files only
+  command = "set filetype = astro",
+})
 -- vim.api.nvim_create_autocmd("filetype", {
 --   pattern = "zsh",
 --   callback = function()
