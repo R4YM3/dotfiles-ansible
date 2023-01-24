@@ -1,74 +1,49 @@
 --[[
-lvim is the global options object
-
-linters should be
-filled in as strings with either
-a global executable or a path to
-an executable
+ THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
+ `lvim` is the global options object
 ]]
--- these are example configs feel free to change to whatever you want
+
+-- vim options
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.relativenumber = true
 
 -- general
-lvim.log.level = "warn"
-lvim.format_on_save = true
-lvim.colorscheme = "onedarker"
+lvim.log.level = "info"
+lvim.format_on_save = {
+  enabled = true,
+  pattern = "*.lua",
+  timeout = 1000,
+}
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
--- keymappings [view all the defaults by pressing <leader>lk]
+-- keymappings <https://www.lunarvim.org/docs/configuration/keybindings>
 lvim.leader = "space"
 -- add your own keymapping
-lvim.keys.normal_mode["<c-s>"] = ":w<cr>"
+lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 
--- unmap a default keymapping
--- vim.keymap.del("n", "<c-up>")
--- override a default keymapping
--- lvim.keys.normal_mode["<c-q>"] = ":q<cr>" -- or vim.keymap.set("n", "<c-q>", ":q<cr>" )
+-- lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
+-- lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 
--- change telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
--- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
--- local _, actions = pcall(require, "telescope.actions")
-lvim.builtin.telescope.defaults.mappings = {
+-- -- Use which-key to add extra bindings with the leader-key prefix
+-- lvim.builtin.which_key.mappings["W"] = { "<cmd>noautocmd w<cr>", "Save without formatting" }
+-- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 
-  --   -- for input mode
-  --   i = {
-  --     ["<c-j>"] = actions.move_selection_next,
-  --     ["<c-k>"] = actions.move_selection_previous,
-  --     ["<c-n>"] = actions.cycle_history_next,
-  --     ["<c-p>"] = actions.cycle_history_prev,
-  --   },
-  --   -- for normal mode
-  --   n = {
-  --     ["<c-j>"] = actions.move_selection_next,
-  --     ["<c-k>"] = actions.move_selection_previous,
-  --   },
-}
+-- -- Change theme settings
+lvim.colorscheme = "onedarker"
 
-lvim.builtin.telescope.defaults.file_ignore_patterns = { "node_modules", "build", "jest-coverage", "cypress-coverage",
-  "coverage", ".nyc_output", "dist" }
 
--- use which-key to add extra bindings with the leader-key prefix
--- lvim.builtin.which_key.mappings["p"] = { "<cmd>telescope projects<cr>", "projects" }
--- lvim.builtin.which_key.mappings["t"] = {
---   name = "+trouble",
---   r = { "<cmd>trouble lsp_references<cr>", "references" },
---   f = { "<cmd>trouble lsp_definitions<cr>", "definitions" },
---   d = { "<cmd>trouble document_diagnostics<cr>", "diagnostics" },
---   q = { "<cmd>trouble quickfix<cr>", "quickfix" },
---   l = { "<cmd>trouble loclist<cr>", "locationlist" },
---   w = { "<cmd>trouble workspace_diagnostics<cr>", "wordspace diagnostics" },
--- }
-
--- todo: user config for predefined plugins
--- after changing plugin config exit and reopen lunarvim, run :packerinstall :packercompile
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
-lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
-
+lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 
--- if you don't want all the parsers change this to a table of the ones you want
+-- Automatically install missing parsers when entering buffer
+lvim.builtin.treesitter.auto_install = true
+
+
 lvim.builtin.treesitter.ensure_installed = {
   "astro",
   "bash",
@@ -85,71 +60,57 @@ lvim.builtin.treesitter.ensure_installed = {
   "yaml",
 }
 
-lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 
--- generic lsp settings
+-- lvim.builtin.treesitter.ignore_install = { "haskell" }
 
--- ---@usage disable automatic installation of servers
--- lvim.lsp.automatic_servers_installation = false
+-- -- generic LSP settings <https://www.lunarvim.org/docs/languages#lsp-support>
 
--- ---configure a server manually. !!requires `:lvimcachereset` to take effect!!
--- ---see the full default list `:lua print(vim.inspect(lvim.lsp.automatic_configuration.skipped_servers))`
+-- --- disable automatic installation of servers
+-- lvim.lsp.installer.setup.automatic_installation = false
+
+-- ---configure a server manually. IMPORTANT: Requires `:LvimCacheReset` to take effect
+-- ---see the full default list `:lua =lvim.lsp.automatic_configuration.skipped_servers`
 -- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })
 -- local opts = {} -- check the lspconfig documentation for a list of all possible options
 -- require("lvim.lsp.manager").setup("pyright", opts)
 
--- ---remove a server from the skipped list, e.g. eslint, or emmet_ls. !!requires `:lvimcachereset` to take effect!!
--- ---`:lviminfo` lists which server(s) are skiipped for the current filetype
--- vim.tbl_map(function(server)
+-- ---remove a server from the skipped list, e.g. eslint, or emmet_ls. IMPORTANT: Requires `:LvimCacheReset` to take effect
+-- ---`:LvimInfo` lists which server(s) are skipped for the current filetype
+-- lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
 --   return server ~= "emmet_ls"
 -- end, lvim.lsp.automatic_configuration.skipped_servers)
 
 -- -- you can set a custom on_attach function that will be used for all the language servers
--- -- see <https://github.com/neovim/nvim-lspconfig#keybindings-and-completion>
+-- -- See <https://github.com/neovim/nvim-lspconfig#keybindings-and-completion>
 -- lvim.lsp.on_attach_callback = function(client, bufnr)
 --   local function buf_set_option(...)
 --     vim.api.nvim_buf_set_option(bufnr, ...)
 --   end
---   --enable completion triggered by <c-x><c-o>
+--   --Enable completion triggered by <c-x><c-o>
 --   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 -- end
 
--- -- set a formatter, this will override the language server formatting capabilities (if it exists)
--- local formatters = require "lvim.lsp.null-ls.formatters"
--- formatters.setup {
---   { command = "black", filetypes = { "python" } },
---   { command = "isort", filetypes = { "python" } },
---   {
---     -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/builtins.md#configuration
---     command = "prettier",
---     ---@usage arguments to pass to the formatter
---     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
---     extra_args = { "--print-with", "100" },
---     ---@usage specify which filetypes to enable. by default a providers will attach to all the filetypes it supports.
---     filetypes = { "typescript", "typescriptreact" },
---   },
--- }
-
--- -- set additional linters
+-- linters and formatters <https://www.lunarvim.org/docs/languages#lintingformatting>
+local formatters = require "lvim.lsp.null-ls.formatters"
+formatters.setup {
+  { command = "stylua" },
+  {
+    command = "prettier",
+    extra_args = { "--print-width", "100" },
+    filetypes = { "typescript", "typescriptreact" },
+  },
+}
 -- local linters = require "lvim.lsp.null-ls.linters"
 -- linters.setup {
 --   { command = "flake8", filetypes = { "python" } },
 --   {
---     -- each linter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/builtins.md#configuration
 --     command = "shellcheck",
---     ---@usage arguments to pass to the formatter
---     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
---     extra_args = { "--severity", "warning" },
---   },
---   {
---     command = "codespell",
---     ---@usage specify which filetypes to enable. by default a providers will attach to all the filetypes it supports.
---     filetypes = { "javascript", "python" },
+--     args = { "--severity", "warning" },
 --   },
 -- }
 
--- additional plugins
+-- -- Additional Plugins <https://www.lunarvim.org/docs/plugins#user-plugins>
 lvim.plugins = {
   { "christoomey/vim-tmux-navigator" },
   { "f-person/git-blame.nvim" },
@@ -199,13 +160,6 @@ lvim.plugins = {
   {
     "steelsojka/headwind.nvim"
   },
-  {
-    "nvim-telescope/telescope-project.nvim",
-    event = "BufWinEnter",
-    setup = function()
-      vim.cmd [[packadd telescope.nvim]]
-    end,
-  },
 
   -- {
   --       "folke/trouble.nvim",
@@ -213,13 +167,15 @@ lvim.plugins = {
   --     },
 }
 
--- autocommands (https://neovim.io/doc/user/autocmd.html)
-vim.api.nvim_create_autocmd("bufenter", {
-  pattern = { "*.astro" },
-  -- enable wrap mode for json files only
-  command = "set filetype = astro",
-})
--- vim.api.nvim_create_autocmd("filetype", {
+-- -- Autocommands (`:help autocmd`) <https://neovim.io/doc/user/autocmd.html>
+--
+-- vim.api.nvim_create_autocmd("bufenter", {
+--   pattern = { "*.astro" },
+--   -- enable wrap mode for json files only
+--   command = "set filetype = astro",
+-- })
+--
+-- vim.api.nvim_create_autocmd("FileType", {
 --   pattern = "zsh",
 --   callback = function()
 --     -- let treesitter use bash highlight for zsh files as well
