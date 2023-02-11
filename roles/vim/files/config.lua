@@ -12,9 +12,11 @@ vim.opt.relativenumber = true
 lvim.log.level = "info"
 lvim.format_on_save = {
   enabled = true,
-  pattern = "*.lua",
+  pattern = "*.lua, *.tsx, *.js, *.ts",
   timeout = 1000,
 }
+
+lvim.format_on_save = true
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
@@ -31,7 +33,7 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 
 -- -- Change theme settings
-lvim.colorscheme = "onedarker"
+lvim.colorscheme = "dracula"
 
 
 lvim.builtin.alpha.active = true
@@ -94,28 +96,30 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- linters and formatters <https://www.lunarvim.org/docs/languages#lintingformatting>
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
-  { command = "stylua" },
+  { command = "black" },
   {
     command = "prettier",
-    extra_args = { "--print-width", "100" },
+    args = { "--print-width", "100" },
     filetypes = { "typescript", "typescriptreact" },
   },
 }
--- local linters = require "lvim.lsp.null-ls.linters"
--- linters.setup {
---   { command = "flake8", filetypes = { "python" } },
---   {
---     command = "shellcheck",
---     args = { "--severity", "warning" },
---   },
--- }
+
+local linters = require "lvim.lsp.null-ls.linters"
+linters.setup {
+  -- { command = "flake8", filetypes = { "python" } },
+  { command = "eslint", filetypes = { "typescript", "typescriptreact" } },
+  {
+    command = "shellcheck",
+    args = { "--severity", "warning" },
+  },
+}
 
 -- -- Additional Plugins <https://www.lunarvim.org/docs/plugins#user-plugins>
 lvim.plugins = {
   { "christoomey/vim-tmux-navigator" },
   { "f-person/git-blame.nvim" },
   { "folke/tokyonight.nvim" },
-  { 'Mofiqul/dracula.nvim' },
+  { 'Mofiqul/dracula.nvim', name = "dracula" },
   { "danilamihailov/beacon.nvim" },
   {
     "windwp/nvim-ts-autotag",
