@@ -1,9 +1,14 @@
+
+- name: clone theme
+  tags: zsh, ohmyzsh, theme
+  shell: git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
 - name: replace thema
   tags: zsh, ohmyzsh, zshrc
   lineinfile:
     path: ~/.zshrc
     regexp: '^(.*)ZSH_THEME="robbyrussell"(.*)$'
-    line: 'ZSH_THEME="agnoster"'
+    line: 'ZSH_THEME="powerlevel10k/powerlevel10k"'
     backrefs: yes
 
 - name: Enable ENABLE_CORRECTION
