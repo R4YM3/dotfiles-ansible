@@ -36,6 +36,9 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.colorscheme = "dracula"
 
 
+lvim.builtin.project.patterns = { ".git" }
+lvim.builtin.project.manual_mode = true
+
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.terminal.active = true
@@ -45,20 +48,30 @@ lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 -- Automatically install missing parsers when entering buffer
 lvim.builtin.treesitter.auto_install = true
 
-
 lvim.builtin.treesitter.ensure_installed = {
   "astro",
   "bash",
   "c",
-  "javascript",
-  "json",
-  "lua",
-  "python",
-  "typescript",
-  "tsx",
   "css",
-  "rust",
+  "html",
+  "gitattributes",
+  "gitignore",
+  "gitcommit",
   "java",
+  "javascript",
+  "jsdoc",
+  "json",
+  "jsonc",
+  "lua",
+  "markdown",
+  "python",
+  "regex",
+  "rust",
+  "scss",
+  "terraform",
+  "tsx",
+  "typescript",
+  "vim",
   "yaml",
 }
 
@@ -99,9 +112,8 @@ formatters.setup {
   { command = "black" },
   {
     command = "prettier",
-    args = { "--print-width", "100" },
     filetypes = { "typescript", "typescriptreact" },
-  },
+  }
 }
 
 local linters = require "lvim.lsp.null-ls.linters"
@@ -111,16 +123,14 @@ linters.setup {
   {
     command = "shellcheck",
     args = { "--severity", "warning" },
-  },
+  }
 }
 
 -- -- Additional Plugins <https://www.lunarvim.org/docs/plugins#user-plugins>
 lvim.plugins = {
   { "christoomey/vim-tmux-navigator" },
   { "f-person/git-blame.nvim" },
-  { "folke/tokyonight.nvim" },
-  { 'Mofiqul/dracula.nvim', name = "dracula" },
-  { "danilamihailov/beacon.nvim" },
+  { 'Mofiqul/dracula.nvim',          name = "dracula" },
   {
     "windwp/nvim-ts-autotag",
     event = "InsertEnter",
@@ -130,24 +140,25 @@ lvim.plugins = {
   },
   {
     "p00f/nvim-ts-rainbow",
-  },
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    config = require("indent_blankline").setup {
-      -- for example, context is off by default, use this to turn it on
-      show_current_context = true,
-      show_current_context_start = true,
-      show_end_of_line = true,
+    config = require("nvim-treesitter.configs").setup {
+      rainbow = {
+        enable = true,
+        -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
+        extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+        max_file_lines = nil, -- Do not enable for files with more than n lines, int
+        -- colors = {}, -- table of hex strings
+        -- termcolors = {} -- table of colour name strings
+      }
     }
   },
   {
     "romgrk/nvim-treesitter-context",
     config = function()
       require("treesitter-context").setup {
-        enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+        enable = true,   -- Enable this plugin (Can be enabled/disabled later via commands)
         throttle = true, -- Throttles plugin updates (may improve performance)
-        max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
-        patterns = { -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
+        max_lines = 0,   -- How many lines the window should span. Values <= 0 mean no limit.
+        patterns = {     -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
           -- For all filetypes
           -- Note that setting an entry here replaces all other patterns for this entry.
           -- By setting the 'default' entry below, you can control which nodes you want to
