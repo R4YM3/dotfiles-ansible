@@ -1,6 +1,7 @@
 homebrew_cask:
   - 1password
   - chromium
+  - crossover
   - cyberduck
   - firefox
   - gitkraken
