@@ -1,10 +1,6 @@
 - name: iterm2
   tags: iterm2, macos
   block:
-    - name: Tap a Homebrew fonts repository
-      homebrew_tap:
-        name: homebrew/cask-fonts
-
     - name: install iterm2 and fonts
       become: false
       homebrew_cask:
@@ -14,7 +10,7 @@
           - font-fira-code-nerd-font
           - font-hack
           - font-jetbrains-mono
-          - font-haskplex-nerd
+          - font-hasklug-nerd-font
 
     - name: clone iterm2 dracula theme
       git:
